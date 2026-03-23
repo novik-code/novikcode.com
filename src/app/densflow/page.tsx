@@ -411,6 +411,16 @@ export default function DensFlowPage() {
             >
               Zobacz funkcje
             </motion.a>
+            <motion.a href="https://demo.densflow.ai" target="_blank" rel="noopener noreferrer"
+              style={{
+                padding: "1rem 2.5rem", borderRadius: 50,
+                background: "transparent", border: "1px solid rgba(0, 204, 255, 0.3)",
+                color: "#00CCFF", fontSize: "1rem", fontWeight: 600, textDecoration: "none",
+              }}
+              whileHover={{ borderColor: "rgba(0, 204, 255, 0.6)", background: "rgba(0, 204, 255, 0.08)" }}
+            >
+              🧪 Wypróbuj demo
+            </motion.a>
           </motion.div>
 
           {/* Countdown in hero */}
@@ -901,6 +911,11 @@ export default function DensFlowPage() {
                 Przetestuj DensFlow.Ai na demo z przykładowymi danymi zanim podejmiesz decyzję.
                 Widzisz dokładnie co kupujesz — zero niespodzianek.
               </p>
+              <a href="https://demo.densflow.ai" target="_blank" rel="noopener noreferrer" style={{
+                display: "inline-block", marginTop: "0.75rem", padding: "0.5rem 1.25rem", borderRadius: 25,
+                background: "linear-gradient(135deg, #0066FF, #00CCFF)", color: "#fff",
+                fontSize: "0.78rem", fontWeight: 700, textDecoration: "none",
+              }}>Wypróbuj demo →</a>
             </motion.div>
           </div>
         </div>
