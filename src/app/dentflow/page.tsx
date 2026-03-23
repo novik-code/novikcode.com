@@ -118,8 +118,8 @@ const uniqueTools = [
 const plans = [
   {
     name: "Starter",
-    price: "299",
-    earlyBird: "179",
+    lifetimePrice: "1 499",
+    monthlyAfter: "299",
     desc: "Dla gabinetów startujących z cyfryzacją",
     features: [
       "Strona wizytówka z SEO",
@@ -135,8 +135,8 @@ const plans = [
   },
   {
     name: "Pro",
-    price: "599",
-    earlyBird: "359",
+    lifetimePrice: "2 999",
+    monthlyAfter: "599",
     desc: "Pełna automatyzacja i AI",
     features: [
       "Wszystko ze Starter",
@@ -154,8 +154,8 @@ const plans = [
   },
   {
     name: "Enterprise",
-    price: "999",
-    earlyBird: "599",
+    lifetimePrice: "4 999",
+    monthlyAfter: "999",
     desc: "Maximum mocy — AI i social media",
     features: [
       "Wszystko z PRO",
@@ -174,12 +174,21 @@ const plans = [
   },
 ];
 
+const coCreationPerks = [
+  { icon: "💡", title: "Zgłaszaj funkcje", desc: "Proponuj nowe funkcjonalności — Twoje potrzeby kształtują roadmapę produktu" },
+  { icon: "🗳️", title: "Głosuj na priorytety", desc: "Decyduj, co budujemy w pierwszej kolejności — demokratyczny rozwój" },
+  { icon: "🧪", title: "Beta dostęp", desc: "Testuj nowe funkcje zanim trafią do publicznej wersji" },
+  { icon: "🤝", title: "Bezpośredni kontakt", desc: "Dedykowany kanał komunikacji z zespołem deweloperskim" },
+];
+
 const faqs = [
+  { q: "Czym jest licencja dożywotnia?", a: "Kupując w przedsprzedaży płacisz jednorazowo i otrzymujesz dostęp do DentFlow NA ZAWSZE. Po premierze produkt będzie dostępny wyłącznie w modelu subskrypcyjnym (299–999 PLN/mies.). Licencja dożywotnia to oferta tylko dla uczestników przedsprzedaży." },
   { q: "Czy DentFlow wymaga instalacji?", a: "Nie. DentFlow działa w 100% w chmurze. Wystarczy przeglądarka — na komputerze, tablecie lub telefonie. Można też zainstalować jako aplikację PWA." },
+  { q: "Jak mogę współtworzyć produkt?", a: "Każdy uczestnik przedsprzedaży dostaje dostęp do panelu współtworzenia — możesz zgłaszać propozycje nowych funkcji, głosować na priorytety i testować beta wersje. Twój głos realnie wpływa na kształt produktu." },
   { q: "Czy mogę zintegrować z moim obecnym systemem?", a: "Tak! DentFlow integruje się z Prodentis, Google Calendar, SMSAPI, Meta (Facebook/Instagram), YouTube, TikTok i innymi popularnymi narzędziami." },
   { q: "Ile trwa wdrożenie?", a: "Strona i podstawowa konfiguracja są gotowe w ciągu jednego dnia roboczego. Pełne wdrożenie z migracją danych i szkoleniem: 3-5 dni roboczych." },
   { q: "Czy dane pacjentów są bezpieczne?", a: "Tak. Stosujemy szyfrowanie, RLS (Row Level Security), audyt logów, rate limiting, oraz pełną zgodność z RODO/GDPR. Dane przechowywane na serwerach w EU." },
-  { q: "Co jeśli nie jestem zadowolony?", a: "Oferujemy 14-dniowy darmowy trial. Bez zobowiązań, bez karty kredytowej. Jeśli DentFlow nie jest dla Ciebie — nic nie tracisz." },
+  { q: "Co jeśli produkt nie spełni moich oczekiwań?", a: "Oferujemy gwarancję satysfakcji. Jeśli w ciągu 30 dni od uruchomienia DentFlow nie spełnia Twoich oczekiwań — zwracamy pieniądze. Bez pytań." },
   { q: "Czy mogę przenieść swoją obecną stronę?", a: "Tak. Możemy przenieść treści z Twojej obecnej strony do DentFlow. Obsługujemy również przekierowania 301 dla zachowania SEO." },
 ];
 
@@ -259,7 +268,7 @@ export default function DentFlowPage() {
               fontSize: "0.72rem", fontWeight: 600, color: "var(--nc-orange)",
               letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "2rem",
             }}>
-              🚀 Przedsprzedaż — 40% taniej!
+              🚀 Przedsprzedaż — Licencja Dożywotnia
             </div>
           </motion.div>
 
@@ -296,7 +305,7 @@ export default function DentFlowPage() {
               whileHover={{ scale: 1.05, boxShadow: "0 16px 50px rgba(224, 120, 48, 0.35)" }}
               whileTap={{ scale: 0.97 }}
             >
-              Zarezerwuj Miejsce — 40% taniej →
+              Kup Licencję Dożywotnią →
             </motion.a>
             <motion.a href="#funkcje"
               style={{
@@ -320,8 +329,8 @@ export default function DentFlowPage() {
             transition={{ delay: 1.2, duration: 0.8 }}
           >
             {[
-              "✅ 14 dni za darmo",
-              "✅ Bez karty kredytowej",
+              "♾️ Licencja dożywotnia",
+              "💡 Współtwórz produkt",
               "✅ Wdrożenie w 1 dzień",
               "✅ RODO / GDPR",
             ].map((badge) => (
@@ -487,20 +496,71 @@ export default function DentFlowPage() {
         </div>
       </Section>
 
+      {/* ═══ CO-CREATION ═══ */}
+      <Section id="wspoltworzenie">
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-amber)", fontWeight: 600 }}>
+              Tylko w Przedsprzedaży
+            </span>
+            <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginTop: "0.8rem" }}>
+              Współtwórz <span className="gradient-text">Produkt Przyszłości</span>
+            </h2>
+            <p style={{ color: "var(--nc-text-muted)", maxWidth: 600, margin: "1rem auto 0", fontSize: "0.95rem", lineHeight: 1.7 }}>
+              Kupując w przedsprzedaży nie tylko zyskujesz dożywotni dostęp — <strong style={{ color: "var(--nc-text)" }}>realnie wpływasz na to, jak DentFlow będzie wyglądał</strong>.
+              Twoje potrzeby kształtują roadmapę produktu.
+            </p>
+          </div>
+          <div className="mobile-stack" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1.25rem" }}>
+            {coCreationPerks.map((perk, i) => (
+              <motion.div key={perk.title}
+                style={{
+                  background: "var(--nc-glass)", border: "1px solid var(--nc-glass-border)",
+                  borderRadius: 16, padding: "2rem", textAlign: "center",
+                }}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                whileHover={{ borderColor: "rgba(212, 175, 55, 0.3)", y: -3 }}
+              >
+                <div style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>{perk.icon}</div>
+                <h4 style={{ fontSize: "0.95rem", fontWeight: 700, marginBottom: "0.5rem" }}>{perk.title}</h4>
+                <p style={{ fontSize: "0.82rem", color: "var(--nc-text-muted)", lineHeight: 1.5 }}>{perk.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
       {/* ═══ PRICING ═══ */}
       <Section id="cennik">
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
-          <div style={{ textAlign: "center", marginBottom: "4rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
             <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-orange)", fontWeight: 600 }}>
-              Cennik
+              Przedsprzedaż
             </span>
             <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginTop: "0.8rem" }}>
-              Wybierz plan <span className="gradient-text">idealny dla Ciebie</span>
+              Licencja <span className="gradient-text">Dożywotnia</span>
             </h2>
-            <p style={{ color: "var(--nc-text-muted)", fontSize: "0.95rem", marginTop: "0.5rem" }}>
-              Przedsprzedaż: <strong style={{ color: "var(--nc-orange)" }}>40% zniżki</strong> na pierwszy rok. Liczba miejsc ograniczona.
+            <p style={{ color: "var(--nc-text-muted)", fontSize: "0.95rem", marginTop: "0.5rem", maxWidth: 650, margin: "0.5rem auto 0" }}>
+              Jednorazowa opłata — dostęp <strong style={{ color: "var(--nc-text)" }}>na zawsze</strong>. Po premierze produkt przejdzie na model subskrypcyjny. Licencja dożywotnia dostępna wyłącznie w przedsprzedaży.
             </p>
           </div>
+
+          {/* Subscription comparison callout */}
+          <motion.div
+            style={{
+              maxWidth: 600, margin: "0 auto 3rem", padding: "1rem 1.5rem",
+              background: "rgba(224, 120, 48, 0.06)", border: "1px solid rgba(224, 120, 48, 0.15)",
+              borderRadius: 14, textAlign: "center",
+            }}
+            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <p style={{ fontSize: "0.82rem", color: "var(--nc-text-muted)", margin: 0, lineHeight: 1.6 }}>
+              💡 <strong style={{ color: "var(--nc-orange)" }}>Po premierze:</strong> subskrypcja od <strong>299 PLN/mies.</strong> do <strong>999 PLN/mies.</strong>
+              <br />Kupując teraz oszczędzasz <strong style={{ color: "rgba(130,255,160,0.8)" }}>tysiące złotych rocznie</strong> i zyskujesz wpływ na produkt.
+            </p>
+          </motion.div>
 
           <div className="mobile-stack" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem", alignItems: "stretch" }}>
             {plans.map((plan, i) => (
@@ -531,28 +591,35 @@ export default function DentFlowPage() {
                 <p style={{ fontSize: "0.8rem", color: "var(--nc-text-muted)", marginBottom: "1.5rem" }}>{plan.desc}</p>
 
                 <div style={{ marginBottom: "1.5rem" }}>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
-                    <span style={{ fontSize: "0.9rem", color: "var(--nc-text-muted)", textDecoration: "line-through" }}>
-                      {plan.price} PLN
-                    </span>
-                  </div>
                   <div style={{ display: "flex", alignItems: "baseline", gap: "0.3rem" }}>
                     <span className="gradient-text" style={{ fontSize: "2.5rem", fontWeight: 800, lineHeight: 1 }}>
-                      {plan.earlyBird}
+                      {plan.lifetimePrice}
                     </span>
-                    <span style={{ fontSize: "0.85rem", color: "var(--nc-text-muted)" }}>PLN/mies.</span>
+                    <span style={{ fontSize: "0.85rem", color: "var(--nc-text-muted)" }}>PLN</span>
                   </div>
-                  <span style={{
-                    display: "inline-block", marginTop: "0.3rem",
-                    padding: "0.2rem 0.6rem", borderRadius: 50,
-                    background: "rgba(130,255,160,0.1)", border: "1px solid rgba(130,255,160,0.2)",
-                    fontSize: "0.65rem", fontWeight: 600, color: "rgba(130,255,160,0.8)",
-                  }}>
-                    Oszczędzasz {Math.round((1 - parseInt(plan.earlyBird) / parseInt(plan.price)) * 100)}% w przedsprzedaży
+                  <span style={{ fontSize: "0.72rem", color: "var(--nc-text-dim)", display: "block", marginTop: "0.3rem" }}>
+                    jednorazowo · dożywotnio
                   </span>
+                  <div style={{
+                    display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                    marginTop: "0.5rem", padding: "0.25rem 0.75rem", borderRadius: 50,
+                    background: "rgba(130,255,160,0.08)", border: "1px solid rgba(130,255,160,0.15)",
+                  }}>
+                    <span style={{ fontSize: "0.65rem", color: "var(--nc-text-muted)" }}>Po premierze:</span>
+                    <span style={{ fontSize: "0.65rem", color: "rgba(255,130,130,0.6)", textDecoration: "line-through" }}>{plan.monthlyAfter} PLN/mies.</span>
+                  </div>
                 </div>
 
-                <div style={{ borderTop: "1px solid var(--nc-glass-border)", paddingTop: "1.25rem", marginBottom: "1.5rem", flex: 1 }}>
+                <div style={{ borderTop: "1px solid var(--nc-glass-border)", paddingTop: "1.25rem", marginBottom: "0.75rem" }}>
+                  {/* Lifetime perks */}
+                  {["♾️ Dożywotni dostęp", "💡 Współtworzenie produktu", "🧪 Beta dostęp"].map((perk) => (
+                    <div key={perk} style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.4rem" }}>
+                      <span style={{ fontSize: "0.78rem", color: "var(--nc-text)" }}>{perk}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ borderTop: "1px solid var(--nc-glass-border)", paddingTop: "1rem", marginBottom: "1.5rem", flex: 1 }}>
                   {plan.features.map((f) => (
                     <div key={f} style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
                       <span style={{ color: "var(--nc-orange)", fontSize: "0.7rem" }}>✓</span>
@@ -573,7 +640,7 @@ export default function DentFlowPage() {
                   }}
                   whileHover={{ scale: 1.03, boxShadow: plan.highlight ? "0 12px 40px rgba(224, 120, 48, 0.3)" : "none" }}
                 >
-                  {plan.highlight ? "Zarezerwuj Miejsce →" : "Wybierz Plan"}
+                  {plan.highlight ? "Kup Licencję Dożywotnią →" : "Wybierz Plan"}
                 </motion.a>
               </motion.div>
             ))}
@@ -655,11 +722,13 @@ export default function DentFlowPage() {
             <div style={{ position: "relative" }}>
               <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🦷</div>
               <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", marginBottom: "0.75rem" }}>
-                Zarezerwuj <span className="gradient-text">Swoje Miejsce</span>
+                Dołącz do <span className="gradient-text">Przedsprzedaży</span>
               </h2>
-              <p style={{ color: "var(--nc-text-muted)", fontSize: "0.95rem", marginBottom: "2rem", lineHeight: 1.7 }}>
-                Dołącz do przedsprzedaży i otrzymaj <strong style={{ color: "var(--nc-orange)" }}>40% zniżki</strong> na pierwszy rok.
-                <br />Liczba miejsc w programie early-bird jest ograniczona.
+              <p style={{ color: "var(--nc-text-muted)", fontSize: "0.95rem", marginBottom: "0.75rem", lineHeight: 1.7 }}>
+                Zapisz się na listę oczekujących i <strong style={{ color: "var(--nc-text)" }}>jako pierwszy/a</strong> otrzymaj możliwość zakupu licencji dożywotniej.
+              </p>
+              <p style={{ color: "var(--nc-text-muted)", fontSize: "0.82rem", marginBottom: "2rem", lineHeight: 1.6 }}>
+                🎯 Jednorazowa opłata · ♾️ Dożywotni dostęp · 💡 Współtworzenie produktu
               </p>
 
               {/* Simple email form (frontend only for now) */}
@@ -695,7 +764,7 @@ export default function DentFlowPage() {
               </div>
 
               <p style={{ marginTop: "1.5rem", fontSize: "0.72rem", color: "var(--nc-text-dim)" }}>
-                Klikając „Zapisz Się" zgadzasz się na kontakt mailowy. Bez spamu. Możesz zrezygnować w każdej chwili.
+                Klikając „Zapisz Się&quot; zgadzasz się na kontakt mailowy. Bez spamu. Możesz zrezygnować w każdej chwili.
               </p>
             </div>
           </motion.div>
