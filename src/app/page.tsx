@@ -257,6 +257,7 @@ export default function Home() {
           {[
             { href: "#services", label: "Services" },
             { href: "/densflow", label: "🦷 DensFlow.Ai" },
+            { href: "/rutynka", label: "🌅 Rutynka" },
             { href: "#work", label: "Work" },
             { href: "#contact", label: "Contact" },
           ].map((link) => (
@@ -621,10 +622,10 @@ export default function Home() {
         <div style={{ maxWidth: "var(--nc-max-width)", margin: "0 auto", padding: "var(--nc-section-gap) 2rem" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
             <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-orange)", fontWeight: 600 }}>
-              Case Study
+              Case Studies
             </span>
             <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", marginTop: "1rem" }}>
-              Our <span className="gradient-text">Flagship Product</span>
+              Our <span className="gradient-text">Products</span>
             </h2>
           </div>
 
@@ -738,6 +739,110 @@ export default function Home() {
                   >
                     <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{item.icon}</div>
                     <div className="gradient-text" style={{ fontSize: "1.7rem", fontWeight: 800, lineHeight: 1 }}>{item.val}</div>
+                    <div style={{ fontSize: "0.68rem", color: "var(--nc-text-muted)", marginTop: "0.35rem", letterSpacing: "0.05em" }}>{item.label}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ── RUTYNKA PROJECT CARD ── */}
+          <motion.div
+            style={{
+              background: "var(--nc-gradient-card)",
+              border: "1px solid var(--nc-glass-border)",
+              borderRadius: 24,
+              padding: "3rem",
+              position: "relative",
+              overflow: "hidden",
+              marginTop: "2rem",
+            }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            whileHover={{ borderColor: "rgba(108, 92, 231, 0.25)" }}
+          >
+            <div style={{ position: "absolute", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(108, 92, 231, 0.06) 0%, transparent 70%)", top: -120, right: -120 }} />
+            <div style={{ position: "absolute", width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(255, 159, 67, 0.05) 0%, transparent 70%)", bottom: -80, left: -80 }} />
+
+            <div className="mobile-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "center" }}>
+              <div>
+                <motion.div
+                  style={{
+                    display: "inline-block",
+                    padding: "0.3rem 1rem", borderRadius: 50,
+                    background: "rgba(108, 92, 231, 0.12)", border: "1px solid rgba(108, 92, 231, 0.2)",
+                    fontSize: "0.72rem", fontWeight: 600, color: "#A29BFE",
+                    letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "1.5rem",
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  🌅 Family · PWA · Coming Soon
+                </motion.div>
+                <h3 style={{ fontSize: "2rem", fontWeight: 800, marginBottom: "1rem", lineHeight: 1.2 }}>
+                  Children&apos;s <span style={{ background: "linear-gradient(135deg, #6C5CE7, #A29BFE, #FF9F43)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Routine Manager</span>
+                </h3>
+                <p style={{ color: "var(--nc-text-muted)", fontSize: "1rem", lineHeight: 1.8, marginBottom: "2rem" }}>
+                  Rutynka turns the morning chaos and evening negotiations into a game.
+                  Children build healthy habits by completing personalized routines,
+                  earning rewards, and tracking streaks — all wrapped in a playful PWA.
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                  {["Morning Routine", "Evening Routine", "Child Profiles", "Rewards System", "Confetti 🎉", "Progress Tracking", "Personalization", "Offline PWA"].map((f) => (
+                    <motion.span
+                      key={f}
+                      style={{
+                        padding: "0.35rem 0.85rem", borderRadius: 50,
+                        background: "var(--nc-glass)", border: "1px solid var(--nc-glass-border)",
+                        fontSize: "0.75rem", color: "var(--nc-text-muted)",
+                      }}
+                      whileHover={{ borderColor: "rgba(108, 92, 231, 0.3)", color: "#e8e6f0" }}
+                    >
+                      {f}
+                    </motion.span>
+                  ))}
+                </div>
+
+                {/* CTA to Rutynka */}
+                <div style={{ marginTop: "2rem" }}>
+                  <motion.a
+                    href="/rutynka"
+                    style={{
+                      display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                      padding: "0.75rem 2rem", borderRadius: 50,
+                      background: "linear-gradient(135deg, #6C5CE7 0%, #A29BFE 100%)",
+                      backgroundSize: "200% 100%",
+                      animation: "gradient-shift 3s ease-in-out infinite",
+                      color: "#fff", fontSize: "0.85rem", fontWeight: 600,
+                      textDecoration: "none",
+                    }}
+                    whileHover={{ scale: 1.05, boxShadow: "0 12px 40px rgba(108, 92, 231, 0.3)" }}
+                  >
+                    🌅 Dowiedz się więcej o Rutynka →
+                  </motion.a>
+                </div>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
+                {[
+                  { val: "🌅", label: "Morning Routine", icon: "☀️" },
+                  { val: "🌙", label: "Evening Routine", icon: "✨" },
+                  { val: "🏆", label: "Rewards System", icon: "⭐" },
+                  { val: "👨‍👩‍👧‍👦", label: "Family Profiles", icon: "💜" },
+                  { val: "PWA", label: "Works Offline", icon: "📲" },
+                  { val: "🎉", label: "Gamification", icon: "🎮" },
+                ].map((item) => (
+                  <motion.div
+                    key={item.label}
+                    style={{
+                      background: "var(--nc-glass)", border: "1px solid var(--nc-glass-border)",
+                      borderRadius: 14, padding: "1.25rem", textAlign: "center",
+                    }}
+                    whileHover={{ borderColor: "rgba(108, 92, 231, 0.3)", y: -3 }}
+                  >
+                    <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{item.icon}</div>
+                    <div style={{ fontSize: "1.7rem", fontWeight: 800, lineHeight: 1, background: "linear-gradient(135deg, #6C5CE7, #FF9F43)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>{item.val}</div>
                     <div style={{ fontSize: "0.68rem", color: "var(--nc-text-muted)", marginTop: "0.35rem", letterSpacing: "0.05em" }}>{item.label}</div>
                   </motion.div>
                 ))}
