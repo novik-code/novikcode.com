@@ -342,27 +342,19 @@ export default function DensFlowPage() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ marginBottom: "1.5rem", display: "flex", flexDirection: "column", alignItems: "center" }}
+            style={{ marginBottom: "1.5rem" }}
           >
             <Image
-              src="/densflow-icon.png"
-              alt="DensFlow.Ai Icon"
-              width={180}
-              height={180}
+              src="/densflow-logo-vertical.png"
+              alt="DensFlow.Ai"
+              width={340}
+              height={340}
               style={{
-                borderRadius: 28,
-                marginBottom: "1rem",
+                maxWidth: "75vw",
+                height: "auto",
                 animation: "logoGlow 3s ease-in-out infinite",
               }}
             />
-            <h2 style={{
-              fontSize: "clamp(2.2rem, 5vw, 3.5rem)", fontWeight: 300,
-              letterSpacing: "0.02em", lineHeight: 1,
-              fontStyle: "italic",
-              color: "var(--nc-text)",
-            }}>
-              DensFlow<span style={{ color: "#0066FF" }}>.Ai</span>
-            </h2>
           </motion.div>
 
           <motion.h1
