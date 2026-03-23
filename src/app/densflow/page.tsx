@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import "./densflow.css";
@@ -260,6 +261,14 @@ const faqs = [
 /* ─── PAGE ─── */
 export default function DensFlowPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [ctaEmail, setCtaEmail] = useState("");
+  const router = useRouter();
+
+  const handleCtaRedirect = (emailOverride?: string) => {
+    const em = (emailOverride || ctaEmail).trim();
+    const params = em ? `?email=${encodeURIComponent(em)}` : "";
+    router.push(`/densflow/zapisz-sie${params}`);
+  };
 
   return (
     <div style={{ position: "relative" }} className="densflow-page">
@@ -378,18 +387,20 @@ export default function DensFlowPage() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <motion.a href="#zapisz-sie"
+            <motion.button
+              onClick={() => handleCtaRedirect()}
               style={{
-                padding: "1rem 2.5rem", borderRadius: 50,
+                padding: "1rem 2.5rem", borderRadius: 50, border: "none",
                 background: "linear-gradient(135deg, #0066FF 0%, #00CCFF 100%)", backgroundSize: "200% 100%",
                 animation: "dfGradientShift 3s ease-in-out infinite",
-                color: "#fff", fontSize: "1rem", fontWeight: 700, textDecoration: "none",
+                color: "#fff", fontSize: "1rem", fontWeight: 700, cursor: "pointer",
+                fontFamily: "inherit",
               }}
               whileHover={{ scale: 1.05, boxShadow: "0 16px 50px rgba(0, 102, 255, 0.4)" }}
               whileTap={{ scale: 0.97 }}
             >
               Kup Licencję Dożywotnią →
-            </motion.a>
+            </motion.button>
             <motion.a href="#funkcje"
               style={{
                 padding: "1rem 2.5rem", borderRadius: 50,
@@ -983,14 +994,16 @@ export default function DensFlowPage() {
                 <CountdownTimer compact />
               </div>
 
-              {/* Simple email form (frontend only for now) */}
-              <div style={{
+              {/* Email form → redirects to registration page */}
+              <form onSubmit={(e) => { e.preventDefault(); handleCtaRedirect(ctaEmail); }} style={{
                 display: "flex", gap: "0.75rem", maxWidth: 500, margin: "0 auto",
                 flexWrap: "wrap", justifyContent: "center",
               }}>
                 <input
                   type="email"
                   placeholder="twoj@email.com"
+                  value={ctaEmail}
+                  onChange={(e) => setCtaEmail(e.target.value)}
                   style={{
                     flex: 1, minWidth: 220, padding: "0.9rem 1.25rem",
                     borderRadius: 50, border: "1px solid var(--nc-glass-border)",
@@ -1001,6 +1014,7 @@ export default function DensFlowPage() {
                   onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"}
                 />
                 <motion.button
+                  type="submit"
                   style={{
                     padding: "0.9rem 2rem", borderRadius: 50, border: "none",
                     background: "linear-gradient(135deg, #0066FF 0%, #00CCFF 100%)", backgroundSize: "200% 100%",
@@ -1013,10 +1027,10 @@ export default function DensFlowPage() {
                 >
                   Zapisz Się →
                 </motion.button>
-              </div>
+              </form>
 
               <p style={{ marginTop: "1.5rem", fontSize: "0.72rem", color: "var(--nc-text-dim)" }}>
-                Klikając „Zapisz Się&quot; zgadzasz się na kontakt mailowy. Bez spamu. Możesz zrezygnować w każdej chwili.
+                Klikając „Zapisz Się&quot; przejdziesz do formularza rejestracji. Twoje dane są chronione zgodnie z RODO.
               </p>
             </div>
           </motion.div>
