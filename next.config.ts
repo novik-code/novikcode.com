@@ -1,7 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: "/dentflow",
+        destination: "/densflow",
+        permanent: true,
+      },
+      {
+        source: "/dentflow/:path*",
+        destination: "/densflow/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
