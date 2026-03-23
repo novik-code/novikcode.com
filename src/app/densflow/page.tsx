@@ -1036,7 +1036,7 @@ export default function DensFlowPage() {
         </p>
         <p style={{ fontSize: "0.68rem", color: "var(--nc-text-dim)", marginBottom: "0.75rem", lineHeight: 1.6 }}>
           ELMAR Sp. z o.o. · NIP: 7542680826 · Opole, Polska<br />
-          tel. <a href="tel:+48790740770" style={{ color: "#0066FF" }}>790 740 770</a> · <a href="mailto:kontakt@densflow.ai" style={{ color: "#0066FF" }}>kontakt@densflow.ai</a>
+          tel. <a href="tel:+48790740770" style={{ color: "#0066FF" }}>790 740 770</a> · <a href="mailto:marcin@nowosielski.pl" style={{ color: "#0066FF" }}>marcin@nowosielski.pl</a>
         </p>
         <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap" }}>
           {[

@@ -15,7 +15,7 @@ export default function PolitykaCookiesPage() {
     {
       title: "Administrator",
       body: `<p>Administratorem plików cookies jest <strong>ELMAR Sp. z o.o.</strong> z siedzibą w Opolu, NIP: 7542680826, obsługująca platformę DensFlow.Ai.</p>
-<p>Kontakt: <a href="mailto:kontakt@densflow.ai" style="color: #0066FF">kontakt@densflow.ai</a></p>`,
+<p>Kontakt: <a href="mailto:marcin@nowosielski.pl" style="color: #0066FF">marcin@nowosielski.pl</a></p>`,
     },
     {
       title: "Rodzaje cookies",

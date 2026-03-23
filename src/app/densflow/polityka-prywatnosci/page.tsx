@@ -12,7 +12,7 @@ export default function PolitykaPrywatnosciPage() {
       icon: "🏢",
       title: "Administrator danych",
       body: `<p>Administratorem danych osobowych jest <strong>ELMAR Sp. z o.o.</strong> z siedzibą w Opolu, NIP: 7542680826.</p>
-<p>Kontakt: <a href="mailto:kontakt@densflow.ai" style="color: #0066FF">kontakt@densflow.ai</a>, tel. <a href="tel:+48790740770" style="color: #0066FF">790 740 770</a></p>`,
+<p>Kontakt: <a href="mailto:marcin@nowosielski.pl" style="color: #0066FF">marcin@nowosielski.pl</a>, tel. <a href="tel:+48790740770" style="color: #0066FF">790 740 770</a></p>`,
     },
     {
       icon: "📋",
@@ -52,7 +52,7 @@ export default function PolitykaPrywatnosciPage() {
 <li>Sprzeciwu wobec przetwarzania</li>
 <li>Cofnięcia zgody na przetwarzanie (bez wpływu na zgodność z prawem przetwarzania przed cofnięciem)</li>
 </ul>
-<p>Aby skorzystać z tych praw, skontaktuj się z nami pod adresem <a href="mailto:kontakt@densflow.ai" style="color: #0066FF">kontakt@densflow.ai</a>.</p>`,
+<p>Aby skorzystać z tych praw, skontaktuj się z nami pod adresem <a href="mailto:marcin@nowosielski.pl" style="color: #0066FF">marcin@nowosielski.pl</a>.</p>`,
     },
     {
       icon: "⏱️",
@@ -82,7 +82,7 @@ export default function PolitykaPrywatnosciPage() {
       title: "Kontakt",
       body: `<p>W sprawach dotyczących ochrony danych osobowych prosimy o kontakt:</p>
 <p><strong>ELMAR Sp. z o.o.</strong><br/>Opole, Polska<br/>
-Email: <a href="mailto:kontakt@densflow.ai" style="color: #0066FF">kontakt@densflow.ai</a><br/>
+Email: <a href="mailto:marcin@nowosielski.pl" style="color: #0066FF">marcin@nowosielski.pl</a><br/>
 Tel.: <a href="tel:+48790740770" style="color: #0066FF">790 740 770</a></p>
 <p>Masz prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (PUODO).</p>`,
     },

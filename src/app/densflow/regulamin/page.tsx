@@ -12,7 +12,7 @@ export default function RegulaminPage() {
       title: "Postanowienia ogólne",
       body: `<p>Niniejszy Regulamin określa zasady korzystania z platformy <strong>DensFlow.Ai</strong>, prowadzonej przez ELMAR Sp. z o.o. z siedzibą w Opolu (dalej: "Usługodawca").</p>
 <p>NIP: 7542680826</p>
-<p>Kontakt: <a href="mailto:kontakt@densflow.ai">kontakt@densflow.ai</a>, tel. <a href="tel:+48790740770">790 740 770</a></p>`,
+<p>Kontakt: <a href="mailto:marcin@nowosielski.pl">marcin@nowosielski.pl</a>, tel. <a href="tel:+48790740770">790 740 770</a></p>`,
     },
     {
       title: "Definicje",

@@ -774,8 +774,8 @@ export default function Home() {
             </p>
 
             <div style={{ position: "relative" }}>
-              <MagneticButton href="mailto:hello@novikcode.com" primary>
-                ✉️ hello@novikcode.com
+              <MagneticButton href="mailto:marcin@nowosielski.pl" primary>
+                ✉️ marcin@nowosielski.pl
               </MagneticButton>
             </div>
 
