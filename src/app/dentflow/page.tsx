@@ -115,63 +115,21 @@ const uniqueTools = [
   },
 ];
 
-const plans = [
-  {
-    name: "Starter",
-    lifetimePrice: "1 499",
-    monthlyAfter: "299",
-    desc: "Dla gabinetów startujących z cyfryzacją",
-    features: [
-      "Strona wizytówka z SEO",
-      "Rezerwacja online",
-      "SMS przypomnienia",
-      "Push notifications",
-      "Blog / baza wiedzy",
-      "Cennik online",
-      "Responsywny design PWA",
-      "Telegram raporty",
-    ],
-    highlight: false,
-  },
-  {
-    name: "Pro",
-    lifetimePrice: "2 999",
-    monthlyAfter: "599",
-    desc: "Pełna automatyzacja i AI",
-    features: [
-      "Wszystko ze Starter",
-      "Portal pacjenta",
-      "Czat pacjent-recepcja",
-      "Zgody cyfrowe (podpis)",
-      "E-karta pacjenta",
-      "AI asystent pracownika",
-      "AI email drafty",
-      "System zadań (Trello)",
-      "Grafik pracownika",
-      "Raport dzienny",
-    ],
-    highlight: true,
-  },
-  {
-    name: "Enterprise",
-    lifetimePrice: "4 999",
-    monthlyAfter: "999",
-    desc: "Maximum mocy — AI i social media",
-    features: [
-      "Wszystko z PRO",
-      "Social media AI posting",
-      "Video pipeline (TikTok/YT)",
-      "Symulator Uśmiechu (AI)",
-      "Mapa Bólu interaktywna",
-      "Kalkulator leczenia",
-      "Porównywarka rozwiązań",
-      "Auto-odpowiedzi social",
-      "E-commerce (sklep)",
-      "Custom branding",
-      "Dedykowane wsparcie",
-    ],
-    highlight: false,
-  },
+/* All features included in lifetime license */
+const allFeatures = [
+  { cat: "Strona WWW", items: ["Strona wizytówka z SEO", "Blog / baza wiedzy", "Cennik online", "Responsywny design PWA", "E-commerce (sklep)"] },
+  { cat: "Pacjenci", items: ["Rezerwacja online", "Portal pacjenta", "Czat pacjent-recepcja", "Zgody cyfrowe (podpis)", "E-karta pacjenta"] },
+  { cat: "AI & Automatyzacja", items: ["AI asystent pracownika", "AI email drafty", "AI content marketing", "Interfejs głosowy", "Social media AI posting"] },
+  { cat: "Komunikacja", items: ["SMS przypomnienia", "Push notifications", "Email automation", "Telegram raporty", "Raport dzienny"] },
+  { cat: "Zarządzanie", items: ["System zadań (Trello)", "Grafik pracownika", "Video pipeline (TikTok/YT)", "Custom branding", "Dedykowane wsparcie"] },
+  { cat: "Unikalne narzędzia", items: ["Symulator Uśmiechu (AI)", "Mapa Bólu interaktywna", "Kalkulator leczenia", "Porównywarka rozwiązań", "Auto-odpowiedzi social"] },
+];
+
+/* Future subscription tiers (for comparison) */
+const futurePlans = [
+  { name: "Starter", price: "299", features: "Strona WWW, rezerwacja, SMS, push, blog" },
+  { name: "Pro", price: "599", features: "+ portal pacjenta, AI asystent, czat, zgody, zadania" },
+  { name: "Enterprise", price: "999", features: "+ social media AI, video, unikalne narzędzia AI" },
 ];
 
 const coCreationPerks = [
@@ -182,7 +140,7 @@ const coCreationPerks = [
 ];
 
 const faqs = [
-  { q: "Czym jest licencja dożywotnia?", a: "Kupując w przedsprzedaży płacisz jednorazowo i otrzymujesz dostęp do DentFlow NA ZAWSZE. Po premierze produkt będzie dostępny wyłącznie w modelu subskrypcyjnym (299–999 PLN/mies.). Licencja dożywotnia to oferta tylko dla uczestników przedsprzedaży." },
+  { q: "Czym jest licencja dożywotnia?", a: "Kupując w przedsprzedaży za 9 999 PLN jednorazowo otrzymujesz dostęp do WSZYSTKICH obecnych i przyszłych funkcji DentFlow NA ZAWSZE. Po premierze produkt będzie dostępny wyłącznie w modelu subskrypcyjnym (299–999 PLN/mies.). Licencja dożywotnia to oferta tylko dla uczestników przedsprzedaży — bez podziału na plany, pełen pakiet." },
   { q: "Czy DentFlow wymaga instalacji?", a: "Nie. DentFlow działa w 100% w chmurze. Wystarczy przeglądarka — na komputerze, tablecie lub telefonie. Można też zainstalować jako aplikację PWA." },
   { q: "Jak mogę współtworzyć produkt?", a: "Każdy uczestnik przedsprzedaży dostaje dostęp do panelu współtworzenia — możesz zgłaszać propozycje nowych funkcji, głosować na priorytety i testować beta wersje. Twój głos realnie wpływa na kształt produktu." },
   { q: "Czy mogę zintegrować z moim obecnym systemem?", a: "Tak! DentFlow integruje się z Prodentis, Google Calendar, SMSAPI, Meta (Facebook/Instagram), YouTube, TikTok i innymi popularnymi narzędziami." },
@@ -531,120 +489,135 @@ export default function DentFlowPage() {
         </div>
       </Section>
 
-      {/* ═══ PRICING ═══ */}
+      {/* ═══ PRICING — SINGLE LIFETIME LICENSE ═══ */}
       <Section id="cennik">
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
-          <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
             <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-orange)", fontWeight: 600 }}>
               Przedsprzedaż
             </span>
             <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginTop: "0.8rem" }}>
               Licencja <span className="gradient-text">Dożywotnia</span>
             </h2>
-            <p style={{ color: "var(--nc-text-muted)", fontSize: "0.95rem", marginTop: "0.5rem", maxWidth: 650, margin: "0.5rem auto 0" }}>
-              Jednorazowa opłata — dostęp <strong style={{ color: "var(--nc-text)" }}>na zawsze</strong>. Po premierze produkt przejdzie na model subskrypcyjny. Licencja dożywotnia dostępna wyłącznie w przedsprzedaży.
+            <p style={{ color: "var(--nc-text-muted)", fontSize: "0.95rem", maxWidth: 650, margin: "0.5rem auto 0" }}>
+              Jedna cena. <strong style={{ color: "var(--nc-text)" }}>Wszystkie funkcje. Na zawsze.</strong><br />
+              Po premierze DentFlow przejdzie na model subskrypcyjny. Licencja dożywotnia dostępna wyłącznie w przedsprzedaży.
             </p>
           </div>
 
-          {/* Subscription comparison callout */}
+          {/* ── BIG LIFETIME CARD ── */}
           <motion.div
             style={{
-              maxWidth: 600, margin: "0 auto 3rem", padding: "1rem 1.5rem",
-              background: "rgba(224, 120, 48, 0.06)", border: "1px solid rgba(224, 120, 48, 0.15)",
-              borderRadius: 14, textAlign: "center",
+              maxWidth: 700, margin: "0 auto 3rem",
+              background: "var(--nc-gradient-card)",
+              border: "2px solid rgba(224, 120, 48, 0.3)",
+              borderRadius: 24, padding: "3rem",
+              position: "relative", overflow: "hidden", textAlign: "center",
             }}
-            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.6 }}
+            whileHover={{ borderColor: "rgba(224, 120, 48, 0.5)" }}
           >
-            <p style={{ fontSize: "0.82rem", color: "var(--nc-text-muted)", margin: 0, lineHeight: 1.6 }}>
-              💡 <strong style={{ color: "var(--nc-orange)" }}>Po premierze:</strong> subskrypcja od <strong>299 PLN/mies.</strong> do <strong>999 PLN/mies.</strong>
-              <br />Kupując teraz oszczędzasz <strong style={{ color: "rgba(130,255,160,0.8)" }}>tysiące złotych rocznie</strong> i zyskujesz wpływ na produkt.
-            </p>
+            {/* Ribbon */}
+            <div style={{
+              position: "absolute", top: 20, right: -35, transform: "rotate(45deg)",
+              background: "var(--nc-gradient-main)", padding: "0.3rem 3rem",
+              fontSize: "0.6rem", fontWeight: 700, color: "#fff", letterSpacing: "0.12em",
+              textTransform: "uppercase",
+            }}>
+              Limitowana Oferta
+            </div>
+
+            {/* Decorative glows */}
+            <div style={{ position: "absolute", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(224, 120, 48, 0.06) 0%, transparent 70%)", top: -150, right: -100 }} />
+            <div style={{ position: "absolute", width: 300, height: 300, borderRadius: "50%", background: "radial-gradient(circle, rgba(107, 66, 201, 0.06) 0%, transparent 70%)", bottom: -100, left: -80 }} />
+
+            <div style={{ position: "relative" }}>
+              <div style={{ fontSize: "0.72rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--nc-orange)", fontWeight: 600, marginBottom: "0.5rem" }}>
+                🦷 DentFlow — Pełen Pakiet
+              </div>
+
+              <div style={{ display: "flex", alignItems: "baseline", justifyContent: "center", gap: "0.4rem", margin: "1rem 0" }}>
+                <span className="gradient-text" style={{ fontSize: "clamp(3rem, 6vw, 4.5rem)", fontWeight: 800, lineHeight: 1 }}>
+                  9 999
+                </span>
+                <span style={{ fontSize: "1.2rem", color: "var(--nc-text-muted)", fontWeight: 600 }}>PLN</span>
+              </div>
+              <p style={{ fontSize: "0.85rem", color: "var(--nc-text-dim)", marginBottom: "1.5rem" }}>
+                jednorazowo · dożywotnio · wszystkie obecne i przyszłe funkcje
+              </p>
+
+              {/* Perks row */}
+              <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap", marginBottom: "2rem" }}>
+                {["♾️ Dożywotni dostęp", "🚀 Wszystkie funkcje", "💡 Współtworzenie produktu", "🧪 Beta dostęp", "🤝 Dedykowane wsparcie"].map((p) => (
+                  <span key={p} style={{
+                    padding: "0.35rem 0.85rem", borderRadius: 50,
+                    background: "rgba(130,255,160,0.08)", border: "1px solid rgba(130,255,160,0.12)",
+                    fontSize: "0.72rem", color: "var(--nc-text)", fontWeight: 500,
+                  }}>{p}</span>
+                ))}
+              </div>
+
+              {/* All features grid */}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.25rem", textAlign: "left", marginBottom: "2.5rem" }}>
+                {allFeatures.map((cat) => (
+                  <div key={cat.cat}>
+                    <div style={{ fontSize: "0.68rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--nc-orange)", fontWeight: 600, marginBottom: "0.5rem" }}>
+                      {cat.cat}
+                    </div>
+                    {cat.items.map((f) => (
+                      <div key={f} style={{ display: "flex", alignItems: "center", gap: "0.4rem", marginBottom: "0.35rem" }}>
+                        <span style={{ color: "rgba(130,255,160,0.7)", fontSize: "0.65rem" }}>✓</span>
+                        <span style={{ fontSize: "0.78rem", color: "var(--nc-text-muted)" }}>{f}</span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+
+              <motion.a href="#zapisz-sie"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                  padding: "1rem 3rem", borderRadius: 50,
+                  background: "var(--nc-gradient-main)", backgroundSize: "200% 100%",
+                  animation: "gradient-shift 3s ease-in-out infinite",
+                  color: "#fff", fontSize: "1rem", fontWeight: 700,
+                  textDecoration: "none",
+                }}
+                whileHover={{ scale: 1.05, boxShadow: "0 16px 50px rgba(224, 120, 48, 0.35)" }}
+                whileTap={{ scale: 0.97 }}
+              >
+                Kup Licencję Dożywotnią →
+              </motion.a>
+            </div>
           </motion.div>
 
-          <div className="mobile-stack" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.5rem", alignItems: "stretch" }}>
-            {plans.map((plan, i) => (
-              <motion.div key={plan.name}
-                style={{
-                  background: plan.highlight ? "var(--nc-gradient-card)" : "var(--nc-glass)",
-                  border: plan.highlight ? "2px solid rgba(224, 120, 48, 0.3)" : "1px solid var(--nc-glass-border)",
-                  borderRadius: 20, padding: "2.5rem 2rem",
-                  position: "relative", overflow: "hidden",
-                  display: "flex", flexDirection: "column",
-                }}
-                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ delay: i * 0.12 }}
-                whileHover={{ y: -5, borderColor: "rgba(224, 120, 48, 0.4)" }}
-              >
-                {plan.highlight && (
-                  <div style={{
-                    position: "absolute", top: 16, right: -30, transform: "rotate(45deg)",
-                    background: "var(--nc-gradient-main)", padding: "0.25rem 2.5rem",
-                    fontSize: "0.6rem", fontWeight: 700, color: "#fff", letterSpacing: "0.1em",
-                    textTransform: "uppercase",
-                  }}>
-                    Popularne
-                  </div>
-                )}
-
-                <h3 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: "0.3rem" }}>{plan.name}</h3>
-                <p style={{ fontSize: "0.8rem", color: "var(--nc-text-muted)", marginBottom: "1.5rem" }}>{plan.desc}</p>
-
-                <div style={{ marginBottom: "1.5rem" }}>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: "0.3rem" }}>
-                    <span className="gradient-text" style={{ fontSize: "2.5rem", fontWeight: 800, lineHeight: 1 }}>
-                      {plan.lifetimePrice}
-                    </span>
-                    <span style={{ fontSize: "0.85rem", color: "var(--nc-text-muted)" }}>PLN</span>
-                  </div>
-                  <span style={{ fontSize: "0.72rem", color: "var(--nc-text-dim)", display: "block", marginTop: "0.3rem" }}>
-                    jednorazowo · dożywotnio
-                  </span>
-                  <div style={{
-                    display: "inline-flex", alignItems: "center", gap: "0.5rem",
-                    marginTop: "0.5rem", padding: "0.25rem 0.75rem", borderRadius: 50,
-                    background: "rgba(130,255,160,0.08)", border: "1px solid rgba(130,255,160,0.15)",
-                  }}>
-                    <span style={{ fontSize: "0.65rem", color: "var(--nc-text-muted)" }}>Po premierze:</span>
-                    <span style={{ fontSize: "0.65rem", color: "rgba(255,130,130,0.6)", textDecoration: "line-through" }}>{plan.monthlyAfter} PLN/mies.</span>
-                  </div>
+          {/* ── FUTURE SUBSCRIPTION COMPARISON ── */}
+          <motion.div
+            style={{
+              maxWidth: 750, margin: "0 auto", padding: "1.5rem 2rem",
+              background: "var(--nc-glass)", border: "1px solid var(--nc-glass-border)",
+              borderRadius: 16, textAlign: "center",
+            }}
+            initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <p style={{ fontSize: "0.72rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--nc-text-dim)", fontWeight: 600, marginBottom: "1rem" }}>
+              💡 Po premierze — model subskrypcyjny
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+              {futurePlans.map((p) => (
+                <div key={p.name} style={{ padding: "1rem", borderRadius: 12, background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.04)" }}>
+                  <div style={{ fontSize: "0.85rem", fontWeight: 700, marginBottom: "0.25rem" }}>{p.name}</div>
+                  <div style={{ fontSize: "0.72rem", color: "rgba(255,130,130,0.6)", textDecoration: "line-through", marginBottom: "0.25rem" }}>{p.price} PLN/mies.</div>
+                  <div style={{ fontSize: "0.68rem", color: "var(--nc-text-dim)", lineHeight: 1.4 }}>{p.features}</div>
                 </div>
-
-                <div style={{ borderTop: "1px solid var(--nc-glass-border)", paddingTop: "1.25rem", marginBottom: "0.75rem" }}>
-                  {/* Lifetime perks */}
-                  {["♾️ Dożywotni dostęp", "💡 Współtworzenie produktu", "🧪 Beta dostęp"].map((perk) => (
-                    <div key={perk} style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.4rem" }}>
-                      <span style={{ fontSize: "0.78rem", color: "var(--nc-text)" }}>{perk}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div style={{ borderTop: "1px solid var(--nc-glass-border)", paddingTop: "1rem", marginBottom: "1.5rem", flex: 1 }}>
-                  {plan.features.map((f) => (
-                    <div key={f} style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
-                      <span style={{ color: "var(--nc-orange)", fontSize: "0.7rem" }}>✓</span>
-                      <span style={{ fontSize: "0.82rem", color: "var(--nc-text-muted)" }}>{f}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <motion.a href="#zapisz-sie"
-                  style={{
-                    display: "block", textAlign: "center", padding: "0.85rem",
-                    borderRadius: 50, textDecoration: "none",
-                    background: plan.highlight ? "var(--nc-gradient-main)" : "transparent",
-                    backgroundSize: plan.highlight ? "200% 100%" : undefined,
-                    animation: plan.highlight ? "gradient-shift 3s ease-in-out infinite" : undefined,
-                    border: plan.highlight ? "none" : "1px solid var(--nc-glass-border)",
-                    color: "#fff", fontSize: "0.85rem", fontWeight: 600,
-                  }}
-                  whileHover={{ scale: 1.03, boxShadow: plan.highlight ? "0 12px 40px rgba(224, 120, 48, 0.3)" : "none" }}
-                >
-                  {plan.highlight ? "Kup Licencję Dożywotnią →" : "Wybierz Plan"}
-                </motion.a>
-              </motion.div>
-            ))}
-          </div>
+              ))}
+            </div>
+            <p style={{ fontSize: "0.72rem", color: "rgba(130,255,160,0.7)", marginTop: "1rem", fontWeight: 600 }}>
+              ✓ Z licencją dożywotnią masz to WSZYSTKO w jednej cenie — na zawsze.
+            </p>
+          </motion.div>
         </div>
       </Section>
 
