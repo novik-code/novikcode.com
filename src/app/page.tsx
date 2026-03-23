@@ -256,7 +256,7 @@ export default function Home() {
         <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
           {[
             { href: "#services", label: "Services" },
-            { href: "/dentflow", label: "🦷 DensFlow.Ai" },
+            { href: "/densflow", label: "🦷 DensFlow.Ai" },
             { href: "#work", label: "Work" },
             { href: "#contact", label: "Contact" },
           ].map((link) => (
@@ -696,7 +696,7 @@ export default function Home() {
                 {/* CTA to DensFlow.Ai */}
                 <div style={{ marginTop: "2rem" }}>
                   <motion.a
-                    href="/dentflow"
+                    href="/densflow"
                     style={{
                       display: "inline-flex", alignItems: "center", gap: "0.5rem",
                       padding: "0.75rem 2rem", borderRadius: 50,

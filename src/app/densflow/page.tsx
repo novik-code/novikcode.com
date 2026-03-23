@@ -345,12 +345,12 @@ export default function DensFlowPage() {
             style={{ marginBottom: "1.5rem" }}
           >
             <Image
-              src="/densflow-logo-full-a.png"
+              src="/densflow-logo-vertical.png"
               alt="DensFlow.Ai"
-              width={420}
-              height={100}
+              width={320}
+              height={320}
               style={{
-                maxWidth: "90vw",
+                maxWidth: "70vw",
                 height: "auto",
                 animation: "logoGlow 3s ease-in-out infinite",
               }}
@@ -1040,9 +1040,9 @@ export default function DensFlowPage() {
         </p>
         <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap" }}>
           {[
-            { href: "/dentflow/regulamin", label: "Regulamin" },
-            { href: "/dentflow/polityka-prywatnosci", label: "Polityka Prywatności" },
-            { href: "/dentflow/polityka-cookies", label: "Polityka Cookies" },
+            { href: "/densflow/regulamin", label: "Regulamin" },
+            { href: "/densflow/polityka-prywatnosci", label: "Polityka Prywatności" },
+            { href: "/densflow/polityka-cookies", label: "Polityka Cookies" },
           ].map((link) => (
             <Link key={link.href} href={link.href} style={{ fontSize: "0.65rem", color: "var(--nc-text-dim)", textDecoration: "underline", textUnderlineOffset: 3 }}>
               {link.label}

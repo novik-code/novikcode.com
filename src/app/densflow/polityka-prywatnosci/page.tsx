@@ -91,7 +91,7 @@ Tel.: <a href="tel:+48790740770" style="color: #0066FF">790 740 770</a></p>
   return (
     <div style={{ background: "var(--nc-bg)", minHeight: "100vh", color: "var(--nc-text)" }}>
       <div style={{ maxWidth: 800, margin: "0 auto", padding: "6rem 2rem 4rem" }}>
-        <Link href="/dentflow" style={{ fontSize: "0.78rem", color: "#0066FF", marginBottom: "2rem", display: "inline-block" }}>
+        <Link href="/densflow" style={{ fontSize: "0.78rem", color: "#0066FF", marginBottom: "2rem", display: "inline-block" }}>
           ← Powrót do DensFlow.Ai
         </Link>
         <h1 style={{ fontSize: "clamp(1.8rem, 4vw, 2.5rem)", fontWeight: 800, marginBottom: "0.5rem" }}>

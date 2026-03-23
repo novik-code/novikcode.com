@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DensFlow.Ai — Cyfrowy Gabinet Stomatologiczny w 5 Minut",
     description: "Jedyny system łączący stronę www, portal pacjenta, AI asystent i social media automation w jednym produkcie.",
-    url: "https://novikcode.com/dentflow",
+    url: "https://novikcode.com/densflow",
     siteName: "Novik Code",
     type: "website",
     locale: "pl_PL",
