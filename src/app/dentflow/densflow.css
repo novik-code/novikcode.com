@@ -1,0 +1,62 @@
+/* ═══════════════════════════════════════════════════
+   DENSFLOW.AI — Override Styles
+   Design: Electric blue + white on dark, clinical AI aesthetic
+   ═══════════════════════════════════════════════════ */
+
+.densflow-page {
+  /* Override accent colors for DensFlow branding */
+  --df-blue: #0066FF;
+  --df-blue-light: #3388FF;
+  --df-cyan: #00CCFF;
+  --df-blue-dim: rgba(0, 102, 255, 0.15);
+  --df-blue-border: rgba(0, 102, 255, 0.25);
+  --df-blue-glow: rgba(0, 102, 255, 0.3);
+}
+
+/* DensFlow gradient text — blue theme */
+.densflow-page .gradient-text,
+.densflow-page .df-gradient-text {
+  background: linear-gradient(90deg, #0066FF 0%, #00CCFF 50%, #3388FF 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* Selection */
+.densflow-page ::selection {
+  background: rgba(0, 102, 255, 0.3);
+  color: #fff;
+}
+
+/* Scrollbar */
+.densflow-page ::-webkit-scrollbar-thumb {
+  background: rgba(0, 102, 255, 0.3);
+}
+.densflow-page ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 102, 255, 0.5);
+}
+
+/* DensFlow border pulse */
+@keyframes dfBorderPulse {
+  0%, 100% { border-color: rgba(0, 102, 255, 0.15); }
+  50%      { border-color: rgba(0, 204, 255, 0.35); }
+}
+
+/* DensFlow gradient shift for buttons */
+@keyframes dfGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* DensFlow pulse glow */
+@keyframes dfPulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 102, 255, 0.2), 0 0 40px rgba(0, 204, 255, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(0, 102, 255, 0.4), 0 0 60px rgba(0, 204, 255, 0.2); }
+}
+
+/* Logo glow animation */
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 102, 255, 0.3)); }
+  50% { filter: drop-shadow(0 0 40px rgba(0, 102, 255, 0.5)) drop-shadow(0 0 80px rgba(0, 204, 255, 0.2)); }
+}

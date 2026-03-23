@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import "./densflow.css";
 
 /* ─── HELPERS ─── */
 function Section({ children, id, delay = 0 }: { children: React.ReactNode; id?: string; delay?: number }) {
@@ -75,7 +76,7 @@ function CountdownTimer({ compact = false }: { compact?: boolean }) {
       {units.map((u) => (
         <div key={u.label} style={{ textAlign: "center" }}>
           <div style={{
-            background: "rgba(224, 120, 48, 0.1)", border: "1px solid rgba(224, 120, 48, 0.2)",
+            background: "rgba(0, 102, 255, 0.08)", border: "1px solid rgba(0, 102, 255, 0.2)",
             borderRadius: 12, padding: compact ? "0.5rem 0.75rem" : "0.75rem 1rem",
             minWidth: compact ? 50 : 70, fontVariantNumeric: "tabular-nums",
           }}>
@@ -105,7 +106,7 @@ const problems = [
 const features = [
   {
     category: "Strona WWW & Marketing",
-    color: "#e07830",
+    color: "#0066FF",
     items: [
       { icon: "🌐", title: "Strona wizytówka", desc: "Responsywna strona z SEO, blog, cennik, oferta — gotowa od razu" },
       { icon: "📝", title: "Blog & baza wiedzy", desc: "Artykuły generowane przez AI, optymalizowane pod SEO" },
@@ -115,7 +116,7 @@ const features = [
   },
   {
     category: "Zarządzanie Pacjentami",
-    color: "#d4af37",
+    color: "#00CCFF",
     items: [
       { icon: "📅", title: "Rezerwacja online", desc: "Pacjent sam wybiera lekarza, usługę i termin — integracja z Prodentis" },
       { icon: "💬", title: "Czat pacjent-recepcja", desc: "Chat w czasie rzeczywistym — bez telefonu i kolejek" },
@@ -125,7 +126,7 @@ const features = [
   },
   {
     category: "Sztuczna Inteligencja",
-    color: "#9370db",
+    color: "#3388FF",
     items: [
       { icon: "🤖", title: "AI Asystent pracownika", desc: "Głosowy asystent GPT-4o z pamięcią, kontekstem gabinetu i bazą wiedzy" },
       { icon: "✉️", title: "AI drafty emailowe", desc: "Automatyczne szkice odpowiedzi na maile pacjentów" },
@@ -135,7 +136,7 @@ const features = [
   },
   {
     category: "Automatyzacja & Komunikacja",
-    color: "#4a6cf7",
+    color: "#5599FF",
     items: [
       { icon: "📲", title: "SMS przypomnienia", desc: "Automatyczne SMS 24h przed wizytą + follow-up po wizycie" },
       { icon: "🔔", title: "Push notifications", desc: "Powiadomienia w przeglądarce i na telefonie — bez aplikacji" },
@@ -150,25 +151,25 @@ const uniqueTools = [
     icon: "🗺️",
     title: "Interaktywna Mapa Bólu",
     desc: "Pacjent wskazuje miejsce bólu na interaktywnym modelu 3D żuchwy/szczęki. System sugeruje możliwe diagnozy i rekomenduje wizytę. Potężne narzędzie lead generation.",
-    gradient: "linear-gradient(135deg, rgba(224, 120, 48, 0.12) 0%, rgba(212, 175, 55, 0.08) 100%)",
+    gradient: "linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 204, 255, 0.06) 100%)",
   },
   {
     icon: "😁",
     title: "AI Symulator Uśmiechu",
     desc: "Pacjent wgrywa selfie, a AI transformuje go w idealny uśmiech. Pokazuje efekt leczenia ZANIM pacjent zdecyduje się na zabieg. Wow-efekt gwarantowany.",
-    gradient: "linear-gradient(135deg, rgba(107, 66, 201, 0.12) 0%, rgba(147, 112, 219, 0.08) 100%)",
+    gradient: "linear-gradient(135deg, rgba(0, 102, 255, 0.06) 0%, rgba(51, 136, 255, 0.1) 100%)",
   },
   {
     icon: "⏱️",
     title: "Kalkulator Czasu Leczenia",
     desc: "Wizard prowadzący pacjenta przez pytania diagnostyczne. Na końcu: szacowany czas leczenia, koszty, plan działania. Automatycznie generuje lead.",
-    gradient: "linear-gradient(135deg, rgba(74, 108, 247, 0.12) 0%, rgba(107, 66, 201, 0.08) 100%)",
+    gradient: "linear-gradient(135deg, rgba(51, 136, 255, 0.1) 0%, rgba(0, 102, 255, 0.06) 100%)",
   },
   {
     icon: "⚖️",
     title: "Porównywarka Rozwiązań",
     desc: "Patient Decision Console — porównanie opcji leczenia (np. implant vs most vs proteza) z cenami, czasem, zaletami/wadami. Pomaga pacjentowi podjąć decyzję.",
-    gradient: "linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(224, 120, 48, 0.08) 100%)",
+    gradient: "linear-gradient(135deg, rgba(0, 204, 255, 0.08) 0%, rgba(0, 102, 255, 0.1) 100%)",
   },
 ];
 
@@ -205,10 +206,10 @@ const coCreationPerks = [
 ];
 
 const faqs = [
-  { q: "Czym jest licencja dożywotnia?", a: "Kupując w przedsprzedaży za 9 999 PLN jednorazowo otrzymujesz dostęp do WSZYSTKICH obecnych i przyszłych funkcji DentFlow NA ZAWSZE. Po premierze produkt będzie dostępny wyłącznie w modelu subskrypcyjnym (599–1 499 PLN/mies.). Licencja dożywotnia to oferta tylko dla uczestników przedsprzedaży — bez podziału na plany, pełen pakiet." },
-  { q: "Czy DentFlow wymaga instalacji?", a: "Nie. DentFlow działa w 100% w chmurze. Wystarczy przeglądarka — na komputerze, tablecie lub telefonie. Można też zainstalować jako aplikację PWA." },
+  { q: "Czym jest licencja dożywotnia?", a: "Kupując w przedsprzedaży za 9 999 PLN jednorazowo otrzymujesz dostęp do WSZYSTKICH obecnych i przyszłych funkcji DensFlow.Ai NA ZAWSZE. Po premierze produkt będzie dostępny wyłącznie w modelu subskrypcyjnym (599–1 499 PLN/mies.). Licencja dożywotnia to oferta tylko dla uczestników przedsprzedaży — bez podziału na plany, pełen pakiet." },
+  { q: "Czy DensFlow.Ai wymaga instalacji?", a: "Nie. DensFlow.Ai działa w 100% w chmurze. Wystarczy przeglądarka — na komputerze, tablecie lub telefonie. Można też zainstalować jako aplikację PWA." },
   { q: "Jak mogę współtworzyć produkt?", a: "Każdy uczestnik przedsprzedaży dostaje dostęp do panelu współtworzenia — możesz zgłaszać propozycje nowych funkcji, głosować na priorytety i testować beta wersje. Twój głos realnie wpływa na kształt produktu." },
-  { q: "Czy mogę zintegrować z moim obecnym systemem?", a: "Tak! DentFlow integruje się z Prodentis, Google Calendar, SMSAPI, Meta (Facebook/Instagram), YouTube, TikTok i innymi popularnymi narzędziami." },
+  { q: "Czy mogę zintegrować z moim obecnym systemem?", a: "Tak! DensFlow.Ai integruje się z Prodentis, Google Calendar, SMSAPI, Meta (Facebook/Instagram), YouTube, TikTok i innymi popularnymi narzędziami." },
   { q: "Ile trwa wdrożenie?", a: "Strona i podstawowa konfiguracja są gotowe w ciągu jednego dnia roboczego. Pełne wdrożenie z migracją danych i szkoleniem: 3-5 dni roboczych." },
   { q: "Czy dane pacjentów są bezpieczne?", a: "Tak. Stosujemy szyfrowanie, RLS (Row Level Security), audyt logów, rate limiting, oraz pełną zgodność z RODO/GDPR. Dane przechowywane na serwerach w EU." },
   { q: "Co jeśli produkt nie spełni moich oczekiwań?", a: "Oferujemy gwarancję satysfakcji. Jeśli w ciągu 30 dni od uruchomienia DentFlow nie spełnia Twoich oczekiwań — zwracamy pieniądze. Bez pytań." },
@@ -220,7 +221,7 @@ export default function DentFlowPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative" }} className="densflow-page">
       {/* ═══ NAVIGATION ═══ */}
       <motion.nav
         style={{
@@ -254,12 +255,12 @@ export default function DentFlowPage() {
           <motion.a href="#zapisz-sie"
             style={{
               padding: "0.5rem 1.2rem", borderRadius: 50,
-              background: "var(--nc-gradient-main)", backgroundSize: "200% 100%",
-              animation: "gradient-shift 3s ease-in-out infinite",
+              background: "linear-gradient(135deg, #0066FF 0%, #00CCFF 100%)", backgroundSize: "200% 100%",
+              animation: "dfGradientShift 3s ease-in-out infinite",
               color: "#fff", fontSize: "0.78rem", fontWeight: 600, letterSpacing: "0.05em",
               textTransform: "uppercase", textDecoration: "none",
             }}
-            whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(224, 120, 48, 0.3)" }}
+            whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(0, 102, 255, 0.35)" }}
           >🦷 Kup w Przedsprzedaży</motion.a>
         </div>
       </motion.nav>
@@ -273,11 +274,11 @@ export default function DentFlowPage() {
         <div style={{ position: "absolute", inset: "-15%", zIndex: 0 }}>
           <div style={{
             width: "100%", height: "100%",
-            backgroundImage: "url(/logo.png)", backgroundSize: "cover", backgroundPosition: "center",
-            animation: "kenBurns 30s ease-in-out infinite", opacity: 0.1, filter: "blur(3px) saturate(1.3)",
+            backgroundImage: "url(/densflow-icon.png)", backgroundSize: "cover", backgroundPosition: "center",
+            animation: "kenBurns 30s ease-in-out infinite", opacity: 0.08, filter: "blur(5px) saturate(1.5)",
           }} />
         </div>
-        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 15%, var(--nc-bg) 70%)", zIndex: 0 }} />
+        <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 10%, var(--nc-bg) 65%)", zIndex: 0 }} />
 
         <div style={{ maxWidth: 900, width: "100%", textAlign: "center", position: "relative", zIndex: 3 }}>
           <motion.div
@@ -287,36 +288,37 @@ export default function DentFlowPage() {
             <div style={{
               display: "inline-flex", alignItems: "center", gap: "0.5rem",
               padding: "0.4rem 1.2rem", borderRadius: 50,
-              background: "rgba(255, 60, 60, 0.1)", border: "1px solid rgba(255, 60, 60, 0.25)",
-              fontSize: "0.72rem", fontWeight: 600, color: "#ff6b6b",
+              background: "rgba(0, 102, 255, 0.08)", border: "1px solid rgba(0, 102, 255, 0.25)",
+              fontSize: "0.72rem", fontWeight: 600, color: "#66AAFF",
               letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "2rem",
-              animation: "borderPulse 2s ease-in-out infinite",
+              animation: "dfBorderPulse 2s ease-in-out infinite",
             }}>
               ⏰ Przedsprzedaż kończy się 1 września — Licencja Dożywotnia tylko teraz!
             </div>
           </motion.div>
 
-          {/* DentFlow Logo/Brand */}
+          {/* DensFlow.Ai Logo */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             style={{ marginBottom: "1.5rem" }}
           >
-            <div style={{
-              display: "inline-flex", alignItems: "center", justifyContent: "center",
-              width: 90, height: 90, borderRadius: 22,
-              background: "var(--nc-gradient-main)", backgroundSize: "200% 100%",
-              animation: "gradient-shift 3s ease-in-out infinite",
-              fontSize: "2.8rem", marginBottom: "0.75rem",
-              boxShadow: "0 16px 60px rgba(224, 120, 48, 0.25)",
-            }}>
-              🦷
-            </div>
+            <Image
+              src="/densflow-icon.png"
+              alt="DensFlow.Ai"
+              width={140}
+              height={140}
+              style={{
+                borderRadius: 24,
+                marginBottom: "1rem",
+                animation: "logoGlow 3s ease-in-out infinite",
+              }}
+            />
             <h2 className="gradient-text" style={{
               fontSize: "clamp(2rem, 5vw, 3.2rem)", fontWeight: 800,
               letterSpacing: "-0.02em", lineHeight: 1,
             }}>
-              DentFlow
+              DensFlow<span style={{ color: "#0066FF", WebkitTextFillColor: "#0066FF" }}>.Ai</span>
             </h2>
           </motion.div>
 
@@ -344,11 +346,11 @@ export default function DentFlowPage() {
             <motion.a href="#zapisz-sie"
               style={{
                 padding: "1rem 2.5rem", borderRadius: 50,
-                background: "var(--nc-gradient-main)", backgroundSize: "200% 100%",
-                animation: "gradient-shift 3s ease-in-out infinite",
+                background: "linear-gradient(135deg, #0066FF 0%, #00CCFF 100%)", backgroundSize: "200% 100%",
+                animation: "dfGradientShift 3s ease-in-out infinite",
                 color: "#fff", fontSize: "1rem", fontWeight: 700, textDecoration: "none",
               }}
-              whileHover={{ scale: 1.05, boxShadow: "0 16px 50px rgba(224, 120, 48, 0.35)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 16px 50px rgba(0, 102, 255, 0.4)" }}
               whileTap={{ scale: 0.97 }}
             >
               Kup Licencję Dożywotnią →
@@ -359,7 +361,7 @@ export default function DentFlowPage() {
                 background: "transparent", border: "1px solid var(--nc-glass-border)",
                 color: "var(--nc-text)", fontSize: "1rem", fontWeight: 500, textDecoration: "none",
               }}
-              whileHover={{ borderColor: "rgba(224, 120, 48, 0.4)", background: "rgba(224, 120, 48, 0.05)" }}
+              whileHover={{ borderColor: "rgba(0, 102, 255, 0.4)", background: "rgba(0, 102, 255, 0.05)" }}
             >
               Zobacz funkcje
             </motion.a>
@@ -404,7 +406,7 @@ export default function DentFlowPage() {
       <Section>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-orange)", fontWeight: 600 }}>
+            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#0066FF", fontWeight: 600 }}>
               Znany Ci ten ból?
             </span>
             <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginTop: "0.8rem" }}>
@@ -420,7 +422,7 @@ export default function DentFlowPage() {
                 }}
                 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                whileHover={{ borderColor: "rgba(224, 120, 48, 0.25)", y: -3 }}
+                whileHover={{ borderColor: "rgba(0, 102, 255, 0.25)", y: -3 }}
               >
                 <div style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>{p.icon}</div>
                 <p style={{ color: "rgba(255,130,130,0.7)", fontSize: "0.85rem", marginBottom: "0.5rem", textDecoration: "line-through", lineHeight: 1.5 }}>
@@ -439,7 +441,7 @@ export default function DentFlowPage() {
       <Section id="funkcje">
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-purple-light)", fontWeight: 600 }}>
+            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#00CCFF", fontWeight: 600 }}>
               Pełna Lista Funkcji
             </span>
             <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginTop: "0.8rem" }}>
@@ -479,8 +481,8 @@ export default function DentFlowPage() {
       <Section id="ai">
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
           <div style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-orange)", fontWeight: 600 }}>
-              Tylko w DentFlow
+            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#0066FF", fontWeight: 600 }}>
+              Tylko w DensFlow.Ai
             </span>
             <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginTop: "0.8rem" }}>
               Narzędzia których <span className="gradient-text">nie znajdziesz nigdzie indziej</span>
@@ -499,7 +501,7 @@ export default function DentFlowPage() {
                 }}
                 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.12, duration: 0.6 }}
-                whileHover={{ y: -5, borderColor: "rgba(224, 120, 48, 0.3)" }}
+                whileHover={{ y: -5, borderColor: "rgba(0, 102, 255, 0.3)" }}
               >
                 <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>{tool.icon}</div>
                 <h3 style={{ fontSize: "1.3rem", fontWeight: 800, marginBottom: "0.75rem" }}>{tool.title}</h3>
@@ -521,14 +523,14 @@ export default function DentFlowPage() {
           borderTop: "1px solid var(--nc-glass-border)", borderBottom: "1px solid var(--nc-glass-border)",
         }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-amber)", fontWeight: 600 }}>
+            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#00CCFF", fontWeight: 600 }}>
               Zbudowane w produkcji
             </span>
             <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", marginTop: "0.8rem" }}>
               <span className="gradient-text">Battle-Tested</span> w Prawdziwym Gabinecie
             </h2>
             <p style={{ color: "var(--nc-text-muted)", fontSize: "0.9rem", marginTop: "0.5rem" }}>
-              DentFlow powstał z potrzeb realnego gabinetu stomatologicznego z 3+ miesiącami w produkcji.
+              DensFlow.Ai powstał z potrzeb realnego gabinetu stomatologicznego z 3+ miesiącami w produkcji.
             </p>
           </div>
           <div className="stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "2rem", textAlign: "center" }}>
@@ -558,14 +560,14 @@ export default function DentFlowPage() {
       <Section id="wspoltworzenie">
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-amber)", fontWeight: 600 }}>
+            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#3388FF", fontWeight: 600 }}>
               Tylko w Przedsprzedaży
             </span>
             <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginTop: "0.8rem" }}>
               Współtwórz <span className="gradient-text">Produkt Przyszłości</span>
             </h2>
             <p style={{ color: "var(--nc-text-muted)", maxWidth: 600, margin: "1rem auto 0", fontSize: "0.95rem", lineHeight: 1.7 }}>
-              Kupując w przedsprzedaży nie tylko zyskujesz dożywotni dostęp — <strong style={{ color: "var(--nc-text)" }}>realnie wpływasz na to, jak DentFlow będzie wyglądał</strong>.
+              Kupując w przedsprzedaży nie tylko zyskujesz dożywotni dostęp — <strong style={{ color: "var(--nc-text)" }}>realnie wpływasz na to, jak DensFlow.Ai będzie wyglądał</strong>.
               Twoje potrzeby kształtują roadmapę produktu.
             </p>
           </div>
@@ -578,7 +580,7 @@ export default function DentFlowPage() {
                 }}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                whileHover={{ borderColor: "rgba(212, 175, 55, 0.3)", y: -3 }}
+                whileHover={{ borderColor: "rgba(0, 102, 255, 0.3)", y: -3 }}
               >
                 <div style={{ fontSize: "2rem", marginBottom: "0.75rem" }}>{perk.icon}</div>
                 <h4 style={{ fontSize: "0.95rem", fontWeight: 700, marginBottom: "0.5rem" }}>{perk.title}</h4>
@@ -608,12 +610,12 @@ export default function DentFlowPage() {
             </p>
             <p style={{ fontSize: "0.78rem", color: "var(--nc-text-muted)", margin: "0.3rem 0 0", lineHeight: 1.5 }}>
               Licencja dożywotnia jest dostępna <strong style={{ color: "var(--nc-text)" }}>wyłącznie w przedsprzedaży do 1 września 2026</strong>.
-              Po tej dacie DentFlow będzie dostępny <strong>tylko w modelu subskrypcyjnym</strong> — od 599 do 1 499 PLN miesięcznie. Bez wyjątków.
+              Po tej dacie DensFlow.Ai będzie dostępny <strong>tylko w modelu subskrypcyjnym</strong> — od 599 do 1 499 PLN miesięcznie. Bez wyjątków.
             </p>
           </motion.div>
 
           <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-orange)", fontWeight: 600 }}>
+            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "#0066FF", fontWeight: 600 }}>
               Przedsprzedaż
             </span>
             <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", marginTop: "0.8rem" }}>
@@ -910,19 +912,19 @@ export default function DentFlowPage() {
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "5rem 2rem", textAlign: "center" }}>
           <motion.div
             style={{
-              background: "var(--nc-gradient-card)", border: "1px solid var(--nc-glass-border)",
+              background: "linear-gradient(145deg, rgba(0, 102, 255, 0.06) 0%, rgba(0, 204, 255, 0.04) 100%)", border: "1px solid var(--nc-glass-border)",
               borderRadius: 28, padding: "4rem 3rem", position: "relative", overflow: "hidden",
             }}
-            whileHover={{ borderColor: "rgba(224, 120, 48, 0.2)" }}
+            whileHover={{ borderColor: "rgba(0, 102, 255, 0.25)" }}
           >
             <div style={{
               position: "absolute", width: 500, height: 500, borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(224, 120, 48, 0.06) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(0, 102, 255, 0.06) 0%, transparent 70%)",
               top: -200, left: "50%", transform: "translateX(-50%)",
             }} />
 
             <div style={{ position: "relative" }}>
-              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🦷</div>
+              <Image src="/densflow-icon.png" alt="DensFlow.Ai" width={64} height={64} style={{ borderRadius: 14, marginBottom: "1rem" }} />
               <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", marginBottom: "0.75rem" }}>
                 Dołącz do <span className="gradient-text">Przedsprzedaży</span>
               </h2>
@@ -952,18 +954,18 @@ export default function DentFlowPage() {
                     background: "var(--nc-glass)", color: "var(--nc-text)",
                     fontSize: "0.9rem", fontFamily: "inherit", outline: "none",
                   }}
-                  onFocus={(e) => e.currentTarget.style.borderColor = "rgba(224, 120, 48, 0.4)"}
+                  onFocus={(e) => e.currentTarget.style.borderColor = "rgba(0, 102, 255, 0.5)"}
                   onBlur={(e) => e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)"}
                 />
                 <motion.button
                   style={{
                     padding: "0.9rem 2rem", borderRadius: 50, border: "none",
-                    background: "var(--nc-gradient-main)", backgroundSize: "200% 100%",
-                    animation: "gradient-shift 3s ease-in-out infinite",
+                    background: "linear-gradient(135deg, #0066FF 0%, #00CCFF 100%)", backgroundSize: "200% 100%",
+                    animation: "dfGradientShift 3s ease-in-out infinite",
                     color: "#fff", fontSize: "0.9rem", fontWeight: 700,
                     cursor: "pointer", fontFamily: "inherit",
                   }}
-                  whileHover={{ scale: 1.05, boxShadow: "0 12px 40px rgba(224, 120, 48, 0.35)" }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 12px 40px rgba(0, 102, 255, 0.4)" }}
                   whileTap={{ scale: 0.97 }}
                 >
                   Zapisz Się →
@@ -987,7 +989,7 @@ export default function DentFlowPage() {
           </span>
         </Link>
         <p style={{ fontSize: "0.72rem", color: "var(--nc-text-dim)", letterSpacing: "0.08em" }}>
-          © {new Date().getFullYear()} Novik Code · DentFlow jest produktem Novik Code
+          © {new Date().getFullYear()} Novik Code · DensFlow.Ai jest produktem Novik Code
         </p>
         <p style={{ fontSize: "0.65rem", color: "var(--nc-text-dim)", marginTop: "0.5rem" }}>
           Opole, Polska · hello@novikcode.com
