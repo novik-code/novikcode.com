@@ -128,6 +128,41 @@ img {
   100% { background-position: 0% 50%; }
 }
 
+/* Cinematic Ken Burns — slow zoom + pan on hero background */
+@keyframes kenBurns {
+  0%   { transform: scale(1.0) translate(0%, 0%); }
+  25%  { transform: scale(1.15) translate(-2%, 1%); }
+  50%  { transform: scale(1.1) translate(1%, -1%); }
+  75%  { transform: scale(1.2) translate(-1%, 2%); }
+  100% { transform: scale(1.0) translate(0%, 0%); }
+}
+
+/* Slow rotating glow for hero */
+@keyframes rotateGlow {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Floating particles */
+@keyframes particleFloat {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-100vh) translateX(30px) scale(0.3); opacity: 0; }
+}
+
+/* Pulsating border */
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(224, 120, 48, 0.15); }
+  50%      { border-color: rgba(107, 66, 201, 0.3); }
+}
+
+/* Text reveal */
+@keyframes textReveal {
+  0%   { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+
 @keyframes grain {
   0%, 100% { transform: translate(0, 0); }
   10% { transform: translate(-5%, -5%); }
@@ -156,4 +191,30 @@ img {
   pointer-events: none;
   z-index: 999;
   opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  :root {
+    --nc-section-gap: 4rem;
+  }
+
+  .hide-mobile {
+    display: none !important;
+  }
+
+  .mobile-stack {
+    grid-template-columns: 1fr !important;
+  }
+
+  .mobile-center {
+    text-align: center !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
