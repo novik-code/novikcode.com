@@ -122,7 +122,7 @@ export async function POST(req: NextRequest) {
           <li>🚀 Strona WWW, portal pacjenta, AI asystent, social media automation</li>
           <li>💡 Współtworzenie produktu — Twój głos kształtuje roadmapę</li>
           <li>🧪 Beta dostęp do nowych funkcji</li>
-          <li>✅ Gwarancja satysfakcji 30 dni</li>
+          <li>🧪 Bezpłatne demo do przetestowania przed zakupem</li>
         </ul>
         <p style="margin: 0; font-size: 0.8rem; color: #ff6b6b; font-weight: 600;">
           ⏰ Oferta ważna do 1 września 2026. Po tej dacie — tylko subskrypcja od 599 PLN/mies.

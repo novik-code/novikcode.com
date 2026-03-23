@@ -40,9 +40,11 @@ export default function RegulaminPage() {
 <p>Po zakończeniu przedsprzedaży (1 września 2026) Platforma będzie dostępna wyłącznie w modelu subskrypcyjnym.</p>`,
     },
     {
-      title: "Gwarancja satysfakcji",
-      body: `<p>Użytkownikowi przysługuje prawo do zwrotu w ciągu <strong>30 dni</strong> od momentu uruchomienia konta. W przypadku niezadowolenia z Platformy, zwracamy pełną kwotę bez pytań.</p>
-<p>Zwrot następuje na rachunek bankowy Użytkownika w terminie 14 dni roboczych od zgłoszenia.</p>`,
+      title: "Prawo odstąpienia i treści cyfrowe",
+      body: `<p>Platforma DensFlow.Ai jest <strong>treścią cyfrową dostarczaną natychmiast</strong> po aktywacji konta.</p>
+<p>Zgodnie z art. 38 pkt 13 ustawy z dnia 30 maja 2014 r. o prawach konsumenta, Użytkownikowi <strong>nie przysługuje prawo do odstąpienia od umowy</strong> po rozpoczęciu świadczenia usługi, jeśli wyraził na to zgodę przed upływem terminu do odstąpienia (co następuje w procesie zakupu).</p>
+<p>Przed zakupem licencji Użytkownik ma możliwość przetestowania Platformy na <strong>bezpłatnym koncie demo</strong> z przykładowymi danymi, co pozwala na pełne zapoznanie się z funkcjonalnością produktu.</p>
+<p>W przypadku subskrypcji — Użytkownik może zrezygnować w dowolnym momencie. Usługa jest świadczona do końca opłaconego okresu rozliczeniowego.</p>`,
     },
     {
       title: "Prawa własności intelektualnej",

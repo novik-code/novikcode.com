@@ -254,7 +254,7 @@ const faqs = [
   { q: "Czy mogę zintegrować z moim obecnym systemem?", a: "Tak! DensFlow.Ai integruje się z Prodentis, Google Calendar, SMSAPI, Meta (Facebook/Instagram), YouTube, TikTok i innymi popularnymi narzędziami." },
   { q: "Ile trwa wdrożenie?", a: "Strona i podstawowa konfiguracja są gotowe w ciągu jednego dnia roboczego. Pełne wdrożenie z migracją danych i szkoleniem: 3-5 dni roboczych." },
   { q: "Czy dane pacjentów są bezpieczne?", a: "Tak. Stosujemy szyfrowanie, RLS (Row Level Security), audyt logów, rate limiting, oraz pełną zgodność z RODO/GDPR. Dane przechowywane na serwerach w EU." },
-  { q: "Co jeśli produkt nie spełni moich oczekiwań?", a: "Oferujemy gwarancję satysfakcji. Jeśli w ciągu 30 dni od uruchomienia DensFlow.Ai nie spełnia Twoich oczekiwań — zwracamy pieniądze. Bez pytań." },
+  { q: "Co jeśli produkt nie spełni moich oczekiwań?", a: "Przed zakupem licencji możesz przetestować DensFlow.Ai na bezpłatnym demo z przykładowymi danymi. Dzięki temu widzisz dokładnie co kupujesz. Licencja dożywotnia jest produktem cyfrowym dostarczanym natychmiast — zgodnie z art. 38 pkt 13 ustawy o prawach konsumenta, po aktywacji nie przysługuje prawo do odstąpienia." },
   { q: "Czy mogę przenieść swoją obecną stronę?", a: "Tak. Możemy przenieść treści z Twojej obecnej strony do DensFlow.Ai. Obsługujemy również przekierowania 301 dla zachowania SEO." },
 ];
 
@@ -893,13 +893,13 @@ export default function DensFlowPage() {
               viewport={{ once: true }} transition={{ delay: 0.1 }}
               whileHover={{ borderColor: "rgba(107, 66, 201, 0.2)" }}
             >
-              <div style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>🛡️</div>
+              <div style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>🧪</div>
               <p style={{ fontSize: "0.9rem", color: "var(--nc-text)", fontWeight: 600, marginBottom: "0.5rem" }}>
-                30-dniowa gwarancja zwrotu
+                Bezpłatne demo przed zakupem
               </p>
               <p style={{ fontSize: "0.82rem", color: "var(--nc-text-muted)", lineHeight: 1.7 }}>
-                Jesteśmy tak pewni jakości DensFlow.Ai, że oferujemy pełny zwrot pieniędzy w ciągu 30 dni od uruchomienia.
-                Bez pytań, bez warunków. Zero ryzyka z Twojej strony.
+                Przetestuj DensFlow.Ai na demo z przykładowymi danymi zanim podejmiesz decyzję.
+                Widzisz dokładnie co kupujesz — zero niespodzianek.
               </p>
             </motion.div>
           </div>
