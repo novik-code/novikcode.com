@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,6 +33,63 @@ function Counter({ value, suffix = "" }: { value: number; suffix?: string }) {
     requestAnimationFrame(tick);
   }, [inView, value]);
   return <span ref={ref}>{count}{suffix}</span>;
+}
+
+/* ─── COUNTDOWN TIMER ─── */
+const LAUNCH_DATE = new Date("2026-09-01T00:00:00+02:00").getTime();
+
+function CountdownTimer({ compact = false }: { compact?: boolean }) {
+  const calc = useCallback(() => {
+    const diff = Math.max(0, LAUNCH_DATE - Date.now());
+    return {
+      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+      minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+      seconds: Math.floor((diff % (1000 * 60)) / 1000),
+    };
+  }, []);
+
+  const [time, setTime] = useState(calc);
+  useEffect(() => {
+    const id = setInterval(() => setTime(calc()), 1000);
+    return () => clearInterval(id);
+  }, [calc]);
+
+  const units = [
+    { val: time.days, label: "dni" },
+    { val: time.hours, label: "godz" },
+    { val: time.minutes, label: "min" },
+    { val: time.seconds, label: "sek" },
+  ];
+
+  if (compact) {
+    return (
+      <span style={{ fontVariantNumeric: "tabular-nums" }}>
+        {time.days}d {String(time.hours).padStart(2, "0")}:{String(time.minutes).padStart(2, "0")}:{String(time.seconds).padStart(2, "0")}
+      </span>
+    );
+  }
+
+  return (
+    <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center" }}>
+      {units.map((u) => (
+        <div key={u.label} style={{ textAlign: "center" }}>
+          <div style={{
+            background: "rgba(224, 120, 48, 0.1)", border: "1px solid rgba(224, 120, 48, 0.2)",
+            borderRadius: 12, padding: compact ? "0.5rem 0.75rem" : "0.75rem 1rem",
+            minWidth: compact ? 50 : 70, fontVariantNumeric: "tabular-nums",
+          }}>
+            <span className="gradient-text" style={{ fontSize: compact ? "1.5rem" : "2rem", fontWeight: 800, lineHeight: 1 }}>
+              {String(u.val).padStart(2, "0")}
+            </span>
+          </div>
+          <div style={{ fontSize: "0.6rem", color: "var(--nc-text-dim)", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: "0.3rem" }}>
+            {u.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 /* ─── DATA ─── */
@@ -127,9 +184,17 @@ const allFeatures = [
 
 /* Future subscription tiers (for comparison) */
 const futurePlans = [
-  { name: "Starter", price: "299", features: "Strona WWW, rezerwacja, SMS, push, blog" },
-  { name: "Pro", price: "599", features: "+ portal pacjenta, AI asystent, czat, zgody, zadania" },
-  { name: "Enterprise", price: "999", features: "+ social media AI, video, unikalne narzędzia AI" },
+  { name: "Starter", price: "299", yearly: "3 588", features: "Strona WWW, rezerwacja, SMS, push, blog" },
+  { name: "Pro", price: "599", yearly: "7 188", features: "+ portal pacjenta, AI asystent, czat, zgody, zadania" },
+  { name: "Enterprise", price: "999", yearly: "11 988", features: "+ social media AI, video, unikalne narzędzia AI" },
+];
+
+/* Social proof */
+const socialProof = [
+  { icon: "🏥", value: "3+", label: "Miesiące w produkcji" },
+  { icon: "👨‍⚕️", value: "100%", label: "Uptime" },
+  { icon: "📊", value: "10K+", label: "Obsłużonych zapytań" },
+  { icon: "⭐", value: "4.9/5", label: "Ocena użyteczności" },
 ];
 
 const coCreationPerks = [
@@ -222,11 +287,12 @@ export default function DentFlowPage() {
             <div style={{
               display: "inline-flex", alignItems: "center", gap: "0.5rem",
               padding: "0.4rem 1.2rem", borderRadius: 50,
-              background: "rgba(224, 120, 48, 0.1)", border: "1px solid rgba(224, 120, 48, 0.2)",
-              fontSize: "0.72rem", fontWeight: 600, color: "var(--nc-orange)",
+              background: "rgba(255, 60, 60, 0.1)", border: "1px solid rgba(255, 60, 60, 0.25)",
+              fontSize: "0.72rem", fontWeight: 600, color: "#ff6b6b",
               letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "2rem",
+              animation: "borderPulse 2s ease-in-out infinite",
             }}>
-              🚀 Przedsprzedaż — Licencja Dożywotnia
+              ⏰ Przedsprzedaż kończy się 1 września — Licencja Dożywotnia tylko teraz!
             </div>
           </motion.div>
 
@@ -277,10 +343,22 @@ export default function DentFlowPage() {
             </motion.a>
           </motion.div>
 
+          {/* Countdown in hero */}
+          <motion.div
+            style={{ marginTop: "2.5rem", marginBottom: "1rem" }}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.8 }}
+          >
+            <p style={{ fontSize: "0.68rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--nc-text-dim)", marginBottom: "0.75rem" }}>
+              Do końca przedsprzedaży pozostało:
+            </p>
+            <CountdownTimer compact />
+          </motion.div>
+
           {/* Trust badges */}
           <motion.div
             style={{
-              display: "flex", justifyContent: "center", gap: "2.5rem", marginTop: "3.5rem",
+              display: "flex", justifyContent: "center", gap: "2.5rem", marginTop: "2rem",
               flexWrap: "wrap",
             }}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -288,8 +366,8 @@ export default function DentFlowPage() {
           >
             {[
               "♾️ Licencja dożywotnia",
+              "⏰ Tylko do 1 września",
               "💡 Współtwórz produkt",
-              "✅ Wdrożenie w 1 dzień",
               "✅ RODO / GDPR",
             ].map((badge) => (
               <span key={badge} style={{ fontSize: "0.78rem", color: "var(--nc-text-muted)", letterSpacing: "0.03em" }}>
@@ -492,7 +570,27 @@ export default function DentFlowPage() {
       {/* ═══ PRICING — SINGLE LIFETIME LICENSE ═══ */}
       <Section id="cennik">
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+
+          {/* ── URGENCY BANNER ── */}
+          <motion.div
+            style={{
+              maxWidth: 700, margin: "0 auto 2.5rem", padding: "1rem 1.5rem",
+              background: "rgba(255, 60, 60, 0.06)", border: "1px solid rgba(255, 60, 60, 0.2)",
+              borderRadius: 14, textAlign: "center",
+            }}
+            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <p style={{ fontSize: "0.88rem", color: "#ff6b6b", margin: 0, fontWeight: 700, lineHeight: 1.6 }}>
+              ⚠️ Ta oferta jest JEDNORAZOWA i NIEPOWTARZALNA
+            </p>
+            <p style={{ fontSize: "0.78rem", color: "var(--nc-text-muted)", margin: "0.3rem 0 0", lineHeight: 1.5 }}>
+              Licencja dożywotnia jest dostępna <strong style={{ color: "var(--nc-text)" }}>wyłącznie w przedsprzedaży do 1 września 2026</strong>.
+              Po tej dacie DentFlow będzie dostępny <strong>tylko w modelu subskrypcyjnym</strong> — od 299 do 999 PLN miesięcznie. Bez wyjątków.
+            </p>
+          </motion.div>
+
+          <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
             <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-orange)", fontWeight: 600 }}>
               Przedsprzedaż
             </span>
@@ -501,8 +599,16 @@ export default function DentFlowPage() {
             </h2>
             <p style={{ color: "var(--nc-text-muted)", fontSize: "0.95rem", maxWidth: 650, margin: "0.5rem auto 0" }}>
               Jedna cena. <strong style={{ color: "var(--nc-text)" }}>Wszystkie funkcje. Na zawsze.</strong><br />
-              Po premierze DentFlow przejdzie na model subskrypcyjny. Licencja dożywotnia dostępna wyłącznie w przedsprzedaży.
+              Po 1 września 2026 DentFlow przejdzie na model subskrypcyjny. Licencja dożywotnia <strong style={{ color: "#ff6b6b" }}>nigdy więcej nie będzie dostępna</strong>.
             </p>
+          </div>
+
+          {/* Countdown */}
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <p style={{ fontSize: "0.68rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--nc-text-dim)", marginBottom: "0.75rem" }}>
+              Koniec przedsprzedaży za:
+            </p>
+            <CountdownTimer />
           </div>
 
           {/* ── BIG LIFETIME CARD ── */}
@@ -521,11 +627,11 @@ export default function DentFlowPage() {
             {/* Ribbon */}
             <div style={{
               position: "absolute", top: 20, right: -35, transform: "rotate(45deg)",
-              background: "var(--nc-gradient-main)", padding: "0.3rem 3rem",
+              background: "linear-gradient(135deg, #ff4444, #cc0000)", padding: "0.3rem 3rem",
               fontSize: "0.6rem", fontWeight: 700, color: "#fff", letterSpacing: "0.12em",
               textTransform: "uppercase",
             }}>
-              Limitowana Oferta
+              Tylko do 1.09!
             </div>
 
             {/* Decorative glows */}
@@ -543,8 +649,11 @@ export default function DentFlowPage() {
                 </span>
                 <span style={{ fontSize: "1.2rem", color: "var(--nc-text-muted)", fontWeight: 600 }}>PLN</span>
               </div>
-              <p style={{ fontSize: "0.85rem", color: "var(--nc-text-dim)", marginBottom: "1.5rem" }}>
+              <p style={{ fontSize: "0.85rem", color: "var(--nc-text-dim)", marginBottom: "0.5rem" }}>
                 jednorazowo · dożywotnio · wszystkie obecne i przyszłe funkcje
+              </p>
+              <p style={{ fontSize: "0.72rem", color: "#ff6b6b", fontWeight: 600, marginBottom: "1.5rem" }}>
+                ⏰ Oferta wygasa 1 września 2026. Potem tylko subskrypcja.
               </p>
 
               {/* Perks row */}
@@ -592,32 +701,130 @@ export default function DentFlowPage() {
             </div>
           </motion.div>
 
-          {/* ── FUTURE SUBSCRIPTION COMPARISON ── */}
-          <motion.div
-            style={{
-              maxWidth: 750, margin: "0 auto", padding: "1.5rem 2rem",
-              background: "var(--nc-glass)", border: "1px solid var(--nc-glass-border)",
-              borderRadius: 16, textAlign: "center",
-            }}
-            initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <p style={{ fontSize: "0.72rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--nc-text-dim)", fontWeight: 600, marginBottom: "1rem" }}>
-              💡 Po premierze — model subskrypcyjny
-            </p>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+          {/* ── FUTURE SUBSCRIPTION COMPARISON (BOLD, PROMINENT) ── */}
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+              <h3 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: "0.5rem" }}>
+                Po 1 września — <span style={{ color: "#ff6b6b" }}>tylko subskrypcja</span>
+              </h3>
+              <p style={{ fontSize: "0.85rem", color: "var(--nc-text-muted)" }}>
+                Tak będzie wyglądał cennik po premierze. <strong style={{ color: "var(--nc-text)" }}>Licencja dożywotnia nie będzie już dostępna.</strong>
+              </p>
+            </div>
+
+            <div className="mobile-stack" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1.25rem" }}>
               {futurePlans.map((p) => (
-                <div key={p.name} style={{ padding: "1rem", borderRadius: 12, background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.04)" }}>
-                  <div style={{ fontSize: "0.85rem", fontWeight: 700, marginBottom: "0.25rem" }}>{p.name}</div>
-                  <div style={{ fontSize: "0.72rem", color: "rgba(255,130,130,0.6)", textDecoration: "line-through", marginBottom: "0.25rem" }}>{p.price} PLN/mies.</div>
-                  <div style={{ fontSize: "0.68rem", color: "var(--nc-text-dim)", lineHeight: 1.4 }}>{p.features}</div>
-                </div>
+                <motion.div key={p.name}
+                  style={{
+                    padding: "2rem 1.5rem", borderRadius: 16, textAlign: "center",
+                    background: "var(--nc-glass)", border: "1px solid var(--nc-glass-border)",
+                  }}
+                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <div style={{ fontSize: "0.95rem", fontWeight: 700, marginBottom: "0.75rem" }}>{p.name}</div>
+                  <div style={{ display: "flex", alignItems: "baseline", justifyContent: "center", gap: "0.25rem", marginBottom: "0.3rem" }}>
+                    <span style={{ fontSize: "2rem", fontWeight: 800, color: "var(--nc-text)" }}>{p.price}</span>
+                    <span style={{ fontSize: "0.82rem", color: "var(--nc-text-muted)" }}>PLN/mies.</span>
+                  </div>
+                  <div style={{ fontSize: "0.72rem", color: "rgba(255,130,130,0.7)", fontWeight: 600, marginBottom: "0.75rem" }}>
+                    = {p.yearly} PLN rocznie
+                  </div>
+                  <div style={{ fontSize: "0.75rem", color: "var(--nc-text-muted)", lineHeight: 1.5 }}>{p.features}</div>
+                </motion.div>
               ))}
             </div>
-            <p style={{ fontSize: "0.72rem", color: "rgba(130,255,160,0.7)", marginTop: "1rem", fontWeight: 600 }}>
-              ✓ Z licencją dożywotnią masz to WSZYSTKO w jednej cenie — na zawsze.
-            </p>
-          </motion.div>
+
+            {/* Value comparison callout */}
+            <motion.div
+              style={{
+                maxWidth: 700, margin: "2rem auto 0", padding: "1.25rem 2rem",
+                background: "rgba(130,255,160,0.04)", border: "1px solid rgba(130,255,160,0.15)",
+                borderRadius: 14, textAlign: "center",
+              }}
+              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              <p style={{ fontSize: "0.88rem", color: "var(--nc-text)", margin: 0, fontWeight: 600, lineHeight: 1.6 }}>
+                💰 Licencja dożywotnia za <strong className="gradient-text">9 999 PLN</strong> = pełny pakiet Enterprise za <strong>mniej niż 10 miesięcy subskrypcji</strong>.
+                <br />
+                <span style={{ color: "rgba(130,255,160,0.8)" }}>Oszczędzasz <strong>dziesiątki tysięcy złotych</strong> w skali lat. Nigdy więcej nie płacisz.</span>
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </Section>
+
+      {/* ═══ SOCIAL PROOF ═══ */}
+      <Section>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "5rem 2rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <span style={{ fontSize: "0.72rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--nc-amber)", fontWeight: 600 }}>
+              Zaufali Nam
+            </span>
+            <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", marginTop: "0.8rem" }}>
+              Dlaczego <span className="gradient-text">warto dołączyć</span> teraz?
+            </h2>
+          </div>
+
+          {/* Stats row */}
+          <div className="stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1.5rem", marginBottom: "3rem" }}>
+            {socialProof.map((sp, i) => (
+              <motion.div key={sp.label}
+                style={{
+                  background: "var(--nc-glass)", border: "1px solid var(--nc-glass-border)",
+                  borderRadius: 16, padding: "1.75rem", textAlign: "center",
+                }}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                whileHover={{ borderColor: "rgba(224, 120, 48, 0.25)", y: -3 }}
+              >
+                <div style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>{sp.icon}</div>
+                <div className="gradient-text" style={{ fontSize: "1.8rem", fontWeight: 800, lineHeight: 1 }}>{sp.value}</div>
+                <div style={{ fontSize: "0.7rem", color: "var(--nc-text-muted)", letterSpacing: "0.08em", textTransform: "uppercase", marginTop: "0.4rem" }}>{sp.label}</div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Testimonial-style trust blocks */}
+          <div className="mobile-stack" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
+            <motion.div
+              style={{
+                background: "var(--nc-glass)", border: "1px solid var(--nc-glass-border)",
+                borderRadius: 16, padding: "2rem",
+              }}
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ borderColor: "rgba(224, 120, 48, 0.2)" }}
+            >
+              <div style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>🏥</div>
+              <p style={{ fontSize: "0.9rem", color: "var(--nc-text)", fontWeight: 600, marginBottom: "0.5rem" }}>
+                Zbudowane w prawdziwym gabinecie
+              </p>
+              <p style={{ fontSize: "0.82rem", color: "var(--nc-text-muted)", lineHeight: 1.7 }}>
+                DentFlow nie jest teorią — został stworzony i jest używany w produkcji w gabinecie stomatologicznym od ponad 3 miesięcy.
+                Każda funkcja rozwiązuje realne problemy, z którymi lekarze i recepcja mierzą się codziennie.
+              </p>
+            </motion.div>
+            <motion.div
+              style={{
+                background: "var(--nc-glass)", border: "1px solid var(--nc-glass-border)",
+                borderRadius: 16, padding: "2rem",
+              }}
+              initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }} transition={{ delay: 0.1 }}
+              whileHover={{ borderColor: "rgba(107, 66, 201, 0.2)" }}
+            >
+              <div style={{ fontSize: "1.5rem", marginBottom: "0.75rem" }}>🛡️</div>
+              <p style={{ fontSize: "0.9rem", color: "var(--nc-text)", fontWeight: 600, marginBottom: "0.5rem" }}>
+                30-dniowa gwarancja zwrotu
+              </p>
+              <p style={{ fontSize: "0.82rem", color: "var(--nc-text-muted)", lineHeight: 1.7 }}>
+                Jesteśmy tak pewni jakości DentFlow, że oferujemy pełny zwrot pieniędzy w ciągu 30 dni od uruchomienia.
+                Bez pytań, bez warunków. Zero ryzyka z Twojej strony.
+              </p>
+            </motion.div>
+          </div>
         </div>
       </Section>
 
@@ -697,12 +904,17 @@ export default function DentFlowPage() {
               <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", marginBottom: "0.75rem" }}>
                 Dołącz do <span className="gradient-text">Przedsprzedaży</span>
               </h2>
-              <p style={{ color: "var(--nc-text-muted)", fontSize: "0.95rem", marginBottom: "0.75rem", lineHeight: 1.7 }}>
-                Zapisz się na listę oczekujących i <strong style={{ color: "var(--nc-text)" }}>jako pierwszy/a</strong> otrzymaj możliwość zakupu licencji dożywotniej.
+              <p style={{ color: "var(--nc-text-muted)", fontSize: "0.95rem", marginBottom: "0.5rem", lineHeight: 1.7 }}>
+                Zapisz się i <strong style={{ color: "var(--nc-text)" }}>jako pierwszy/a</strong> otrzymaj możliwość zakupu licencji dożywotniej za <strong className="gradient-text">9 999 PLN</strong>.
               </p>
-              <p style={{ color: "var(--nc-text-muted)", fontSize: "0.82rem", marginBottom: "2rem", lineHeight: 1.6 }}>
-                🎯 Jednorazowa opłata · ♾️ Dożywotni dostęp · 💡 Współtworzenie produktu
+              <p style={{ color: "#ff6b6b", fontSize: "0.82rem", fontWeight: 600, marginBottom: "1rem" }}>
+                ⏰ Oferta kończy się 1 września 2026. Potem tylko subskrypcja od 299 PLN/mies.
               </p>
+
+              {/* Mini countdown */}
+              <div style={{ marginBottom: "2rem" }}>
+                <CountdownTimer compact />
+              </div>
 
               {/* Simple email form (frontend only for now) */}
               <div style={{
