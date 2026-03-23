@@ -256,6 +256,7 @@ export default function Home() {
         <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
           {[
             { href: "#services", label: "Services" },
+            { href: "/dentflow", label: "🦷 DentFlow" },
             { href: "#work", label: "Work" },
             { href: "#contact", label: "Contact" },
           ].map((link) => (
@@ -690,6 +691,24 @@ export default function Home() {
                       {f}
                     </motion.span>
                   ))}
+                </div>
+
+                {/* CTA to DentFlow */}
+                <div style={{ marginTop: "2rem" }}>
+                  <motion.a
+                    href="/dentflow"
+                    style={{
+                      display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                      padding: "0.75rem 2rem", borderRadius: 50,
+                      background: "var(--nc-gradient-main)", backgroundSize: "200% 100%",
+                      animation: "gradient-shift 3s ease-in-out infinite",
+                      color: "#fff", fontSize: "0.85rem", fontWeight: 600,
+                      textDecoration: "none",
+                    }}
+                    whileHover={{ scale: 1.05, boxShadow: "0 12px 40px rgba(224, 120, 48, 0.3)" }}
+                  >
+                    🦷 Dowiedz się więcej o DentFlow →
+                  </motion.a>
                 </div>
               </div>
 
