@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "DentFlow — Inteligentna Platforma dla Gabinetów Stomatologicznych | Novik Code",
-  description: "Kompleksowy system zarządzania gabinetem stomatologicznym. Rezerwacje online, portal pacjenta, AI asystent, social media automation, SMS/push powiadomienia. Zapisz się na przedsprzedaż.",
+  title: "DensFlow.Ai — Inteligentna Platforma AI dla Gabinetów Stomatologicznych",
+  description: "Kompleksowy system zarządzania gabinetem stomatologicznym z AI. Rezerwacje online, portal pacjenta, AI asystent, social media automation, SMS/push powiadomienia. Kup licencję dożywotnią w przedsprzedaży.",
   keywords: [
     "oprogramowanie stomatologiczne", "system dla dentysty", "gabinet stomatologiczny",
     "rezerwacje online dentysta", "portal pacjenta", "AI dentysta",
-    "zarządzanie gabinetem", "DentFlow", "Novik Code", "SaaS stomatologia",
+    "zarządzanie gabinetem", "DensFlow", "DensFlow.Ai", "SaaS stomatologia",
   ],
   openGraph: {
-    title: "DentFlow — Cyfrowy Gabinet Stomatologiczny w 5 Minut",
+    title: "DensFlow.Ai — Cyfrowy Gabinet Stomatologiczny w 5 Minut",
     description: "Jedyny system łączący stronę www, portal pacjenta, AI asystent i social media automation w jednym produkcie.",
     url: "https://novikcode.com/dentflow",
     siteName: "Novik Code",
@@ -18,6 +18,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DentFlowLayout({ children }: { children: React.ReactNode }) {
+export default function DensFlowLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

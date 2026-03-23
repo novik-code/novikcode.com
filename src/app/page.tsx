@@ -256,7 +256,7 @@ export default function Home() {
         <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
           {[
             { href: "#services", label: "Services" },
-            { href: "/dentflow", label: "🦷 DentFlow" },
+            { href: "/dentflow", label: "🦷 DensFlow.Ai" },
             { href: "#work", label: "Work" },
             { href: "#contact", label: "Contact" },
           ].map((link) => (
@@ -693,7 +693,7 @@ export default function Home() {
                   ))}
                 </div>
 
-                {/* CTA to DentFlow */}
+                {/* CTA to DensFlow.Ai */}
                 <div style={{ marginTop: "2rem" }}>
                   <motion.a
                     href="/dentflow"
@@ -707,7 +707,7 @@ export default function Home() {
                     }}
                     whileHover={{ scale: 1.05, boxShadow: "0 12px 40px rgba(224, 120, 48, 0.3)" }}
                   >
-                    🦷 Dowiedz się więcej o DentFlow →
+                    🦷 Dowiedz się więcej o DensFlow.Ai →
                   </motion.a>
                 </div>
               </div>

@@ -253,12 +253,12 @@ const faqs = [
   { q: "Czy mogę zintegrować z moim obecnym systemem?", a: "Tak! DensFlow.Ai integruje się z Prodentis, Google Calendar, SMSAPI, Meta (Facebook/Instagram), YouTube, TikTok i innymi popularnymi narzędziami." },
   { q: "Ile trwa wdrożenie?", a: "Strona i podstawowa konfiguracja są gotowe w ciągu jednego dnia roboczego. Pełne wdrożenie z migracją danych i szkoleniem: 3-5 dni roboczych." },
   { q: "Czy dane pacjentów są bezpieczne?", a: "Tak. Stosujemy szyfrowanie, RLS (Row Level Security), audyt logów, rate limiting, oraz pełną zgodność z RODO/GDPR. Dane przechowywane na serwerach w EU." },
-  { q: "Co jeśli produkt nie spełni moich oczekiwań?", a: "Oferujemy gwarancję satysfakcji. Jeśli w ciągu 30 dni od uruchomienia DentFlow nie spełnia Twoich oczekiwań — zwracamy pieniądze. Bez pytań." },
-  { q: "Czy mogę przenieść swoją obecną stronę?", a: "Tak. Możemy przenieść treści z Twojej obecnej strony do DentFlow. Obsługujemy również przekierowania 301 dla zachowania SEO." },
+  { q: "Co jeśli produkt nie spełni moich oczekiwań?", a: "Oferujemy gwarancję satysfakcji. Jeśli w ciągu 30 dni od uruchomienia DensFlow.Ai nie spełnia Twoich oczekiwań — zwracamy pieniądze. Bez pytań." },
+  { q: "Czy mogę przenieść swoją obecną stronę?", a: "Tak. Możemy przenieść treści z Twojej obecnej strony do DensFlow.Ai. Obsługujemy również przekierowania 301 dla zachowania SEO." },
 ];
 
 /* ─── PAGE ─── */
-export default function DentFlowPage() {
+export default function DensFlowPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -658,7 +658,7 @@ export default function DentFlowPage() {
             </h2>
             <p style={{ color: "var(--nc-text-muted)", fontSize: "0.95rem", maxWidth: 650, margin: "0.5rem auto 0" }}>
               Jedna cena. <strong style={{ color: "var(--nc-text)" }}>Wszystkie funkcje. Na zawsze.</strong><br />
-              Po 1 września 2026 DentFlow przejdzie na model subskrypcyjny. Licencja dożywotnia <strong style={{ color: "#ff6b6b" }}>nigdy więcej nie będzie dostępna</strong>.
+              Po 1 września 2026 DensFlow.Ai przejdzie na model subskrypcyjny. Licencja dożywotnia <strong style={{ color: "#ff6b6b" }}>nigdy więcej nie będzie dostępna</strong>.
             </p>
           </div>
 
@@ -869,7 +869,7 @@ export default function DentFlowPage() {
                 Zbudowane w prawdziwym gabinecie
               </p>
               <p style={{ fontSize: "0.82rem", color: "var(--nc-text-muted)", lineHeight: 1.7 }}>
-                DentFlow nie jest teorią — został stworzony i jest używany w produkcji w gabinecie stomatologicznym od ponad 3 miesięcy.
+                DensFlow.Ai nie jest teorią — został stworzony i jest używany w produkcji w gabinecie stomatologicznym od ponad 3 miesięcy.
                 Każda funkcja rozwiązuje realne problemy, z którymi lekarze i recepcja mierzą się codziennie.
               </p>
             </motion.div>
@@ -887,7 +887,7 @@ export default function DentFlowPage() {
                 30-dniowa gwarancja zwrotu
               </p>
               <p style={{ fontSize: "0.82rem", color: "var(--nc-text-muted)", lineHeight: 1.7 }}>
-                Jesteśmy tak pewni jakości DentFlow, że oferujemy pełny zwrot pieniędzy w ciągu 30 dni od uruchomienia.
+                Jesteśmy tak pewni jakości DensFlow.Ai, że oferujemy pełny zwrot pieniędzy w ciągu 30 dni od uruchomienia.
                 Bez pytań, bez warunków. Zero ryzyka z Twojej strony.
               </p>
             </motion.div>
@@ -1031,12 +1031,24 @@ export default function DentFlowPage() {
             <span style={{ background: "var(--nc-gradient-text)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Novik</span>Code
           </span>
         </Link>
-        <p style={{ fontSize: "0.72rem", color: "var(--nc-text-dim)", letterSpacing: "0.08em" }}>
+        <p style={{ fontSize: "0.72rem", color: "var(--nc-text-dim)", letterSpacing: "0.08em", marginBottom: "0.5rem" }}>
           © {new Date().getFullYear()} Novik Code · DensFlow.Ai jest produktem Novik Code
         </p>
-        <p style={{ fontSize: "0.65rem", color: "var(--nc-text-dim)", marginTop: "0.5rem" }}>
-          Opole, Polska · hello@novikcode.com
+        <p style={{ fontSize: "0.68rem", color: "var(--nc-text-dim)", marginBottom: "0.75rem", lineHeight: 1.6 }}>
+          ELMAR Sp. z o.o. · NIP: 7542680826 · Opole, Polska<br />
+          tel. <a href="tel:+48790740770" style={{ color: "#0066FF" }}>790 740 770</a> · <a href="mailto:kontakt@densflow.ai" style={{ color: "#0066FF" }}>kontakt@densflow.ai</a>
         </p>
+        <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap" }}>
+          {[
+            { href: "/dentflow/regulamin", label: "Regulamin" },
+            { href: "/dentflow/polityka-prywatnosci", label: "Polityka Prywatności" },
+            { href: "/dentflow/polityka-cookies", label: "Polityka Cookies" },
+          ].map((link) => (
+            <Link key={link.href} href={link.href} style={{ fontSize: "0.65rem", color: "var(--nc-text-dim)", textDecoration: "underline", textUnderlineOffset: 3 }}>
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </footer>
     </div>
   );
