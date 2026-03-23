@@ -184,9 +184,9 @@ const allFeatures = [
 
 /* Future subscription tiers (for comparison) */
 const futurePlans = [
-  { name: "Starter", price: "299", yearly: "3 588", features: "Strona WWW, rezerwacja, SMS, push, blog" },
-  { name: "Pro", price: "599", yearly: "7 188", features: "+ portal pacjenta, AI asystent, czat, zgody, zadania" },
-  { name: "Enterprise", price: "999", yearly: "11 988", features: "+ social media AI, video, unikalne narzędzia AI" },
+  { name: "Starter", price: "599", yearly: "7 188", features: "Strona WWW, rezerwacja, SMS, push, blog" },
+  { name: "Pro", price: "999", yearly: "11 988", features: "+ portal pacjenta, AI asystent, czat, zgody, zadania" },
+  { name: "Enterprise", price: "1 499", yearly: "17 988", features: "+ social media AI, video, unikalne narzędzia AI" },
 ];
 
 /* Social proof */
@@ -205,7 +205,7 @@ const coCreationPerks = [
 ];
 
 const faqs = [
-  { q: "Czym jest licencja dożywotnia?", a: "Kupując w przedsprzedaży za 9 999 PLN jednorazowo otrzymujesz dostęp do WSZYSTKICH obecnych i przyszłych funkcji DentFlow NA ZAWSZE. Po premierze produkt będzie dostępny wyłącznie w modelu subskrypcyjnym (299–999 PLN/mies.). Licencja dożywotnia to oferta tylko dla uczestników przedsprzedaży — bez podziału na plany, pełen pakiet." },
+  { q: "Czym jest licencja dożywotnia?", a: "Kupując w przedsprzedaży za 9 999 PLN jednorazowo otrzymujesz dostęp do WSZYSTKICH obecnych i przyszłych funkcji DentFlow NA ZAWSZE. Po premierze produkt będzie dostępny wyłącznie w modelu subskrypcyjnym (599–1 499 PLN/mies.). Licencja dożywotnia to oferta tylko dla uczestników przedsprzedaży — bez podziału na plany, pełen pakiet." },
   { q: "Czy DentFlow wymaga instalacji?", a: "Nie. DentFlow działa w 100% w chmurze. Wystarczy przeglądarka — na komputerze, tablecie lub telefonie. Można też zainstalować jako aplikację PWA." },
   { q: "Jak mogę współtworzyć produkt?", a: "Każdy uczestnik przedsprzedaży dostaje dostęp do panelu współtworzenia — możesz zgłaszać propozycje nowych funkcji, głosować na priorytety i testować beta wersje. Twój głos realnie wpływa na kształt produktu." },
   { q: "Czy mogę zintegrować z moim obecnym systemem?", a: "Tak! DentFlow integruje się z Prodentis, Google Calendar, SMSAPI, Meta (Facebook/Instagram), YouTube, TikTok i innymi popularnymi narzędziami." },
@@ -260,7 +260,7 @@ export default function DentFlowPage() {
               textTransform: "uppercase", textDecoration: "none",
             }}
             whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(224, 120, 48, 0.3)" }}
-          >🦷 Zarezerwuj Miejsce</motion.a>
+          >🦷 Kup w Przedsprzedaży</motion.a>
         </div>
       </motion.nav>
 
@@ -296,14 +296,36 @@ export default function DentFlowPage() {
             </div>
           </motion.div>
 
+          {/* DentFlow Logo/Brand */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            style={{ marginBottom: "1.5rem" }}
+          >
+            <div style={{
+              display: "inline-flex", alignItems: "center", justifyContent: "center",
+              width: 90, height: 90, borderRadius: 22,
+              background: "var(--nc-gradient-main)", backgroundSize: "200% 100%",
+              animation: "gradient-shift 3s ease-in-out infinite",
+              fontSize: "2.8rem", marginBottom: "0.75rem",
+              boxShadow: "0 16px 60px rgba(224, 120, 48, 0.25)",
+            }}>
+              🦷
+            </div>
+            <h2 className="gradient-text" style={{
+              fontSize: "clamp(2rem, 5vw, 3.2rem)", fontWeight: 800,
+              letterSpacing: "-0.02em", lineHeight: 1,
+            }}>
+              DentFlow
+            </h2>
+          </motion.div>
+
           <motion.h1
-            style={{ fontSize: "clamp(2.2rem, 5.5vw, 4rem)", fontWeight: 800, lineHeight: 1.08, marginBottom: "1.5rem" }}
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
+            style={{ fontSize: "clamp(1.2rem, 2.8vw, 1.8rem)", fontWeight: 600, lineHeight: 1.3, marginBottom: "1.5rem", color: "var(--nc-text-muted)" }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Cyfrowy Gabinet{" "}
-            <span className="gradient-text">Stomatologiczny</span>
-            <br />w 5 Minut
+            Cyfrowy Gabinet <span style={{ color: "var(--nc-text)" }}>Stomatologiczny</span> w 5 Minut
           </motion.h1>
 
           <motion.p
@@ -586,7 +608,7 @@ export default function DentFlowPage() {
             </p>
             <p style={{ fontSize: "0.78rem", color: "var(--nc-text-muted)", margin: "0.3rem 0 0", lineHeight: 1.5 }}>
               Licencja dożywotnia jest dostępna <strong style={{ color: "var(--nc-text)" }}>wyłącznie w przedsprzedaży do 1 września 2026</strong>.
-              Po tej dacie DentFlow będzie dostępny <strong>tylko w modelu subskrypcyjnym</strong> — od 299 do 999 PLN miesięcznie. Bez wyjątków.
+              Po tej dacie DentFlow będzie dostępny <strong>tylko w modelu subskrypcyjnym</strong> — od 599 do 1 499 PLN miesięcznie. Bez wyjątków.
             </p>
           </motion.div>
 
@@ -653,7 +675,7 @@ export default function DentFlowPage() {
                 jednorazowo · dożywotnio · wszystkie obecne i przyszłe funkcje
               </p>
               <p style={{ fontSize: "0.72rem", color: "#ff6b6b", fontWeight: 600, marginBottom: "1.5rem" }}>
-                ⏰ Oferta wygasa 1 września 2026. Potem tylko subskrypcja.
+                ⏰ Oferta wygasa 1 września 2026. Potem tylko subskrypcja od 599 PLN/mies.
               </p>
 
               {/* Perks row */}
@@ -746,7 +768,7 @@ export default function DentFlowPage() {
               viewport={{ once: true }}
             >
               <p style={{ fontSize: "0.88rem", color: "var(--nc-text)", margin: 0, fontWeight: 600, lineHeight: 1.6 }}>
-                💰 Licencja dożywotnia za <strong className="gradient-text">9 999 PLN</strong> = pełny pakiet Enterprise za <strong>mniej niż 10 miesięcy subskrypcji</strong>.
+                💰 Licencja dożywotnia za <strong className="gradient-text">9 999 PLN</strong> = pełny pakiet Enterprise za <strong>mniej niż 7 miesięcy subskrypcji</strong>.
                 <br />
                 <span style={{ color: "rgba(130,255,160,0.8)" }}>Oszczędzasz <strong>dziesiątki tysięcy złotych</strong> w skali lat. Nigdy więcej nie płacisz.</span>
               </p>
@@ -908,7 +930,7 @@ export default function DentFlowPage() {
                 Zapisz się i <strong style={{ color: "var(--nc-text)" }}>jako pierwszy/a</strong> otrzymaj możliwość zakupu licencji dożywotniej za <strong className="gradient-text">9 999 PLN</strong>.
               </p>
               <p style={{ color: "#ff6b6b", fontSize: "0.82rem", fontWeight: 600, marginBottom: "1rem" }}>
-                ⏰ Oferta kończy się 1 września 2026. Potem tylko subskrypcja od 299 PLN/mies.
+                ⏰ Oferta kończy się 1 września 2026. Potem tylko subskrypcja od 599 PLN/mies.
               </p>
 
               {/* Mini countdown */}
