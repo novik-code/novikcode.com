@@ -4,6 +4,7 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 const FROM_ADDRESS = "DensFlow.Ai <noreply@mikrostomart.pl>";
+const ADMIN_EMAIL = "marcin@nowosielski.pl";
 
 /* ─── DensFlow.Ai branded email template ─── */
 function makeDensFlowEmail(bodyContent: string): string {
@@ -155,6 +156,38 @@ export async function POST(req: NextRequest) {
     } catch (emailErr: any) {
       console.error("[DensFlow Lead] Email error:", emailErr);
       // Don't fail the whole request if email fails
+    }
+
+    // Notify admin about the full lead
+    try {
+      const now = new Date().toLocaleString("pl-PL", { timeZone: "Europe/Warsaw" });
+      await resend.emails.send({
+        from: FROM_ADDRESS,
+        to: [ADMIN_EMAIL],
+        subject: `🎉 Pełny zapis DensFlow — ${first_name} ${last_name}`,
+        html: makeDensFlowEmail(`
+          <h2 style="color: #22c55e; margin: 0 0 1rem; font-size: 1.3rem;">
+            🎉 Nowy pełny zapis do przedsprzedaży!
+          </h2>
+          <div style="background: rgba(0, 102, 255, 0.08); border: 1px solid rgba(0, 102, 255, 0.2); border-radius: 12px; padding: 1.5rem; margin: 1rem 0;">
+            <p style="margin: 0 0 0.4rem;"><strong>👤 Imię i nazwisko:</strong> ${first_name} ${last_name}</p>
+            <p style="margin: 0 0 0.4rem;"><strong>📧 Email:</strong> ${email}</p>
+            <p style="margin: 0 0 0.4rem;"><strong>📱 Telefon:</strong> ${cleanPhone}</p>
+            <p style="margin: 0 0 0.4rem;"><strong>✅ Zgoda RODO:</strong> Tak</p>
+            <p style="margin: 0;"><strong>📢 Zgoda marketing:</strong> ${marketing_consent ? 'Tak' : 'Nie'}</p>
+          </div>
+          <p style="margin: 1rem 0 0; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+            Data zapisu: ${now}<br/>
+            Źródło: densflow-landing (pełny formularz)
+          </p>
+          <p style="margin: 1rem 0 0; font-size: 0.9rem; color: #fff; font-weight: 600;">
+            💰 Ta osoba jest gotowa do kontaktu w sprawie licencji dożywotniej!
+          </p>
+        `),
+      });
+      console.log(`[DensFlow Lead] Admin notification sent to ${ADMIN_EMAIL}`);
+    } catch (adminErr: any) {
+      console.error("[DensFlow Lead] Admin email error:", adminErr);
     }
 
     return NextResponse.json({ success: true, message: "Dziękujemy! Sprawdź swoją skrzynkę email." });

@@ -267,6 +267,16 @@ export default function DensFlowPage() {
   const handleCtaRedirect = (emailOverride?: string) => {
     const em = (emailOverride || ctaEmail).trim();
     const params = em ? `?email=${encodeURIComponent(em)}` : "";
+
+    // Fire-and-forget: save partial lead (email only) before redirecting
+    if (em && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) {
+      fetch("/api/densflow-partial-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: em }),
+      }).catch(() => {}); // silently ignore errors — don't block UX
+    }
+
     router.push(`/densflow/zapisz-sie${params}`);
   };
 
