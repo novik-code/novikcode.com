@@ -3,7 +3,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
-const FROM_ADDRESS = "DensFlow.Ai <noreply@mikrostomart.pl>";
+const FROM_ADDRESS = "DensFlow.Ai <gabinet@mikrostomart.pl>";
 const ADMIN_EMAIL = "marcin@nowosielski.pl";
 
 /**
