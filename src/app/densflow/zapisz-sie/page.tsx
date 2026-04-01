@@ -15,7 +15,7 @@ function ZapiszSieForm() {
   const [phone, setPhone] = useState("");
   const [rodoConsent, setRodoConsent] = useState(false);
   const [marketingConsent, setMarketingConsent] = useState(false);
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "redirecting" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
@@ -46,6 +46,13 @@ function ZapiszSieForm() {
       if (!res.ok) {
         setErrorMsg(data.error || "Wystąpił błąd. Spróbuj ponownie.");
         setStatus("error");
+        return;
+      }
+
+      // Redirect to PayU checkout
+      if (data.payuRedirectUrl) {
+        setStatus("redirecting");
+        window.location.href = data.payuRedirectUrl;
         return;
       }
 
@@ -233,7 +240,7 @@ function ZapiszSieForm() {
 
                 <motion.button
                   type="submit"
-                  disabled={status === "loading"}
+                  disabled={status === "loading" || status === "redirecting"}
                   style={{
                     width: "100%", padding: "1rem", borderRadius: 14, border: "none",
                     background: status === "loading"
@@ -245,7 +252,7 @@ function ZapiszSieForm() {
                   whileHover={status !== "loading" ? { scale: 1.02, boxShadow: "0 8px 30px rgba(0, 102, 255, 0.25)" } : {}}
                   whileTap={status !== "loading" ? { scale: 0.98 } : {}}
                 >
-                  {status === "loading" ? "⏳ Wysyłanie..." : "🦷 Zapisz się do przedsprzedaży"}
+                  {status === "loading" ? "⏳ Tworzenie zamówienia..." : status === "redirecting" ? "🔄 Przekierowanie do PayU..." : "💳 Zapłać 9 999 PLN"}
                 </motion.button>
 
                 <p style={{ fontSize: "0.68rem", color: "rgba(232,230,240,0.25)", textAlign: "center", marginTop: "1rem", lineHeight: 1.5 }}>
