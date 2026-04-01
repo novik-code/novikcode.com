@@ -173,6 +173,7 @@ export async function POST(req: NextRequest) {
     // STEP 3: Try PayU order (GRACEFUL — if fails, still succeed)
     // ──────────────────────────────────────────────────────
     let payuRedirectUrl: string | null = null;
+    let payuError: string | null = null;
 
     try {
       const host = req.headers.get("host") || "www.novikcode.com";
@@ -217,12 +218,14 @@ export async function POST(req: NextRequest) {
     } catch (payuErr: any) {
       // PayU failed — but email was already sent, lead already saved
       console.error("[DensFlow Lead] PayU error (non-blocking):", payuErr.message);
+      payuError = payuErr.message;
     }
 
     // Return success — with or without PayU redirect
     return NextResponse.json({
       success: true,
       payuRedirectUrl, // null if PayU failed — frontend handles gracefully
+      payuError: payuError || null, // null if PayU succeeded
       message: "Dziękujemy! Sprawdź swoją skrzynkę email.",
     });
   } catch (err: any) {

@@ -56,6 +56,11 @@ function ZapiszSieForm() {
         return;
       }
 
+      // PayU failed but lead was saved + emails sent
+      if (data.payuError) {
+        console.warn("[PayU] Error:", data.payuError);
+      }
+
       setStatus("success");
     } catch {
       setErrorMsg("Błąd połączenia. Sprawdź internet i spróbuj ponownie.");

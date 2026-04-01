@@ -312,17 +312,16 @@ export default function DensFlowPage() {
               whileHover={{ color: "#e8e6f0" }}
             >{l.label}</motion.a>
           ))}
-          <motion.button
-            onClick={() => handleCtaRedirect()}
+          <motion.a href="#zapisz-sie"
             style={{
               padding: "0.5rem 1.2rem", borderRadius: 50,
               background: "linear-gradient(135deg, #0066FF 0%, #00CCFF 100%)", backgroundSize: "200% 100%",
               animation: "dfGradientShift 3s ease-in-out infinite",
               color: "#fff", fontSize: "0.78rem", fontWeight: 600, letterSpacing: "0.05em",
-              textTransform: "uppercase", border: "none", cursor: "pointer", fontFamily: "inherit",
+              textTransform: "uppercase", textDecoration: "none",
             }}
             whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(0, 102, 255, 0.35)" }}
-          >🦷 Kup w Przedsprzedaży</motion.button>
+          >🦷 Kup w Przedsprzedaży</motion.a>
         </div>
       </motion.nav>
 
@@ -775,21 +774,20 @@ export default function DensFlowPage() {
                 ))}
               </div>
 
-              <motion.button
-                onClick={() => handleCtaRedirect()}
+              <motion.a href="#zapisz-sie"
                 style={{
                   display: "inline-flex", alignItems: "center", gap: "0.5rem",
                   padding: "1rem 3rem", borderRadius: 50,
                   background: "linear-gradient(135deg, #0066FF 0%, #00CCFF 100%)", backgroundSize: "200% 100%",
                   animation: "dfGradientShift 3s ease-in-out infinite",
                   color: "#fff", fontSize: "1rem", fontWeight: 700,
-                  border: "none", cursor: "pointer", fontFamily: "inherit",
+                  textDecoration: "none",
                 }}
                 whileHover={{ scale: 1.05, boxShadow: "0 16px 50px rgba(0, 102, 255, 0.4)" }}
                 whileTap={{ scale: 0.97 }}
               >
                 Kup Licencję Dożywotnią →
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
 
