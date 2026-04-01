@@ -397,20 +397,19 @@ export default function DensFlowPage() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <motion.button
-              onClick={() => handleCtaRedirect()}
+            <motion.a href="#zapisz-sie"
               style={{
-                padding: "1rem 2.5rem", borderRadius: 50, border: "none",
+                padding: "1rem 2.5rem", borderRadius: 50,
                 background: "linear-gradient(135deg, #0066FF 0%, #00CCFF 100%)", backgroundSize: "200% 100%",
                 animation: "dfGradientShift 3s ease-in-out infinite",
-                color: "#fff", fontSize: "1rem", fontWeight: 700, cursor: "pointer",
-                fontFamily: "inherit",
+                color: "#fff", fontSize: "1rem", fontWeight: 700,
+                textDecoration: "none",
               }}
               whileHover={{ scale: 1.05, boxShadow: "0 16px 50px rgba(0, 102, 255, 0.4)" }}
               whileTap={{ scale: 0.97 }}
             >
               Kup Licencję Dożywotnią →
-            </motion.button>
+            </motion.a>
             <motion.a href="#funkcje"
               style={{
                 padding: "1rem 2.5rem", borderRadius: 50,
