@@ -1,4 +1,4 @@
--- DensFlow Orders — tracks PayU payments for lifetime licenses
+--- DensFlow Orders — tracks PayU payments for lifetime licenses
 CREATE TABLE IF NOT EXISTS densflow_orders (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     lead_id UUID REFERENCES densflow_leads(id) ON DELETE SET NULL,
