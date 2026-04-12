@@ -10,8 +10,11 @@ export default function RegulaminPage() {
   const sections = [
     {
       title: "Postanowienia ogólne",
-      body: `<p>Niniejszy Regulamin określa zasady korzystania z platformy <strong>DensFlow.Ai</strong>, prowadzonej przez ELMAR Sp. z o.o. z siedzibą w Opolu (dalej: "Usługodawca").</p>
-<p>NIP: 7542680826</p>
+      body: `<p>Niniejszy Regulamin określa zasady korzystania z platformy <strong>DensFlow.Ai</strong>, prowadzonej przez:</p>
+<p><strong>ELMAR sp. z o.o.</strong></p>
+<p>ul. Centralna 33A, 45-940 Opole</p>
+<p>NIP: 7543251709, KRS: 0000815074</p>
+<p>Zarząd: Marcin Nowosielski, Elżbieta Nowosielska</p>
 <p>Kontakt: <a href="mailto:marcin@nowosielski.pl">marcin@nowosielski.pl</a>, tel. <a href="tel:+48790740770">790 740 770</a></p>`,
     },
     {

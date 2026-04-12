@@ -1073,7 +1073,7 @@ export default function DensFlowPage() {
           © {new Date().getFullYear()} Novik Code · DensFlow.Ai jest produktem Novik Code
         </p>
         <p style={{ fontSize: "0.68rem", color: "var(--nc-text-dim)", marginBottom: "0.75rem", lineHeight: 1.6 }}>
-          ELMAR Sp. z o.o. · NIP: 7542680826 · Opole, Polska<br />
+          ELMAR sp. z o.o. · NIP: 7543251709 · KRS: 0000815074 · ul. Centralna 33A, 45-940 Opole<br />
           tel. <a href="tel:+48790740770" style={{ color: "#0066FF" }}>790 740 770</a> · <a href="mailto:marcin@nowosielski.pl" style={{ color: "#0066FF" }}>marcin@nowosielski.pl</a>
         </p>
         <div style={{ display: "flex", justifyContent: "center", gap: "1.5rem", flexWrap: "wrap" }}>

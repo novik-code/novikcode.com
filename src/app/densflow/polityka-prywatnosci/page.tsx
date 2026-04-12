@@ -11,7 +11,7 @@ export default function PolitykaPrywatnosciPage() {
     {
       icon: "🏢",
       title: "Administrator danych",
-      body: `<p>Administratorem danych osobowych jest <strong>ELMAR Sp. z o.o.</strong> z siedzibą w Opolu, NIP: 7542680826.</p>
+      body: `<p>Administratorem danych osobowych jest <strong>ELMAR sp. z o.o.</strong> z siedzibą w Opolu, ul. Centralna 33A, 45-940 Opole, NIP: 7543251709, KRS: 0000815074.</p>
 <p>Kontakt: <a href="mailto:marcin@nowosielski.pl" style="color: #0066FF">marcin@nowosielski.pl</a>, tel. <a href="tel:+48790740770" style="color: #0066FF">790 740 770</a></p>`,
     },
     {
@@ -81,7 +81,8 @@ export default function PolitykaPrywatnosciPage() {
       icon: "📞",
       title: "Kontakt",
       body: `<p>W sprawach dotyczących ochrony danych osobowych prosimy o kontakt:</p>
-<p><strong>ELMAR Sp. z o.o.</strong><br/>Opole, Polska<br/>
+<p><strong>ELMAR sp. z o.o.</strong><br/>ul. Centralna 33A, 45-940 Opole<br/>
+NIP: 7543251709, KRS: 0000815074<br/>
 Email: <a href="mailto:marcin@nowosielski.pl" style="color: #0066FF">marcin@nowosielski.pl</a><br/>
 Tel.: <a href="tel:+48790740770" style="color: #0066FF">790 740 770</a></p>
 <p>Masz prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (PUODO).</p>`,
